@@ -1,33 +1,32 @@
 package com.kharagedition.englishtibetandictionary
 
-import android.content.Intent
+import com.kharagedition.englishtibetandictionary.adapter.WordsPagingDataAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
-import com.kharagedition.englishtibetandictionary.adapter.ItemClickListener
-import com.kharagedition.englishtibetandictionary.adapter.WordsAdapter
 import com.kharagedition.englishtibetandictionary.model.Word
 import com.kharagedition.englishtibetandictionary.util.BottomSheetDialog
 import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), ItemClickListener {
+class MainActivity : AppCompatActivity() {
     companion object{
         var TAG = MainActivity::class.java.name
     }
     lateinit var commonToolbar: MaterialToolbar;
     private lateinit var viewModel: WordsViewModel
     lateinit var wordRecyclerView: RecyclerView;
-    lateinit var wordsAdapter: WordsAdapter;
+    private val pagingAdapter by lazy { WordsPagingDataAdapter() }
 
 
 
@@ -43,26 +42,19 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         wordRecyclerView = findViewById(R.id.container);
         viewModel = ViewModelProvider(this).get(WordsViewModel::class.java)
         setSupportActionBar(commonToolbar)
-        wordsAdapter= WordsAdapter(this)
     }
 
     private fun addListener() {
 
         wordRecyclerView.apply {
             layoutManager = LinearLayoutManager(context);
-            adapter = wordsAdapter
+            adapter = pagingAdapter
             setHasFixedSize(true)
         }
 
         Log.d(TAG, "addListener: ");
-        viewModel.prayers.observe(this
-        ) {
-            if(it.isEmpty()){
-                Log.d(TAG, "empty: ");
-            }else{
-                wordsAdapter.submitList(it)
-                Log.d(TAG, "SIZE:::${it.size}");
-            }
+        lifecycleScope.launch {
+            viewModel.prayersList.collectLatest { source -> pagingAdapter.submitData(source) }
         }
     }
 
@@ -86,7 +78,4 @@ class MainActivity : AppCompatActivity(), ItemClickListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onItemClick(word: Word) {
-        TODO("Not yet implemented")
-    }
 }

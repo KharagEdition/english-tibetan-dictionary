@@ -8,6 +8,10 @@ import com.kharagedition.englishtibetandictionary.model.Word
  */
 @Dao
 interface WordDao {
+
+    @Query("SELECT * FROM DICTIONARY LIMIT :size ")
+    abstract suspend fun getAllWordsFromDictionary(size: Int): List<Word>
+
     @Query("SELECT * FROM DICTIONARY LIMIT 20")
     fun getWords(): Flow<List<Word>>
 
