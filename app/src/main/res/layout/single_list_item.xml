@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        app:cardElevation="5dp"
         android:background="@color/brown_700"
         app:strokeColor="@color/white"
         android:layout_width="match_parent"
@@ -16,42 +17,39 @@
 
         <LinearLayout
             android:background="@color/brown_700"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="10">
+            android:orientation="vertical">
+
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/wynie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="test"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:paddingTop="5dp"
-                android:paddingBottom="7dp"
                 android:id="@+id/english"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:text="རྒྱུན་ཆགས་གསུམ་པ།"
                 android:textSize="24sp" />
             <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/defination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
+                android:lineSpacingMultiplier="1.5"
                 android:text="test"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/wynie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="test"
+                android:textColor="@color/grayWhite"
+                android:textSize="18sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
