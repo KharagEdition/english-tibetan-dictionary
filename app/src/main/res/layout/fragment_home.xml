@@ -252,6 +252,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_undraw_reading_time_gvg0"/>
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/wod_en"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="match_parent"
@@ -260,6 +261,7 @@
                         android:textSize="20sp"
                         android:text="Tibetan"/>
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/wod_tb"
                         android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="match_parent"
@@ -268,6 +270,7 @@
                         android:textSize="18sp"
                         android:text="This is the defination \n of the word that s "/>
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/wod_generate_btn"
                         android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

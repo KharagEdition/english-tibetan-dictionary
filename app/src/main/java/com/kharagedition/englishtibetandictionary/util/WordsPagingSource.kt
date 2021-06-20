@@ -17,11 +17,11 @@ class WordsPagingSource(private val wordDao: WordDao) : PagingSource<Int, Word>(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Word> {
         val position = params.key ?: INITIAL_PAGE_INDEX
-        val randomPosts = wordDao.getAllWordsFromDictionary(params.loadSize)
+        val randomWords = wordDao.getAllWordsFromDictionary(params.loadSize)
         return LoadResult.Page(
-            data = randomPosts,
+            data = randomWords,
             prevKey = if (position == INITIAL_PAGE_INDEX) null else position - 1,
-            nextKey = if (randomPosts.isNullOrEmpty()) null else position + 1
+            nextKey = if (randomWords.isNullOrEmpty()) null else position + 1
         )
     }
 

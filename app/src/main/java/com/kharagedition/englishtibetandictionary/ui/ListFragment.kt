@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,8 +28,8 @@ class ListFragment : Fragment() {
     lateinit var commonToolbar: MaterialToolbar;
     lateinit var mAdView: AdView
     lateinit var wordRecyclerView: RecyclerView;
-    private val pagingAdapter by lazy { WordsPagingDataAdapter() }
     private val wordsViewModel: WordsViewModel by activityViewModels();
+    private val pagingAdapter by lazy { WordsPagingDataAdapter(wordsViewModel) }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +49,15 @@ class ListFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear();
         inflater.inflate(R.menu.option_menu, menu)
-        var searchItem = menu?.findItem(R.id.action_search);
-        var searchView = searchItem?.actionView as SearchView;
+        val searchItem = menu.findItem(R.id.action_search);
+        val searchView = searchItem?.actionView as SearchView;
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //viewModel.filterData(query);
+                /*lifecycleScope.launch {
+                    wordsViewModel.filteredData(query).collectLatest {
+                        pagingAdapter.submitData(it)
+                    }
+                }*/
                 Log.i(MainActivity.TAG,"Llego al querysubmit $query")
                 return false
             }
@@ -97,8 +102,12 @@ class ListFragment : Fragment() {
 
         Log.d(MainActivity.TAG, "addListener: ");
         lifecycleScope.launch {
-            wordsViewModel.prayersList.collectLatest { source -> pagingAdapter.submitData(source) }
+            wordsViewModel.wordsList.collectLatest { source -> pagingAdapter.submitData(source) }
         }
+
+        wordsViewModel.wordOfDay.observe(viewLifecycleOwner, Observer {
+            Log.e("TAG", "WODAY: ${it.english}", )
+        });
     }
 
 }

@@ -3,14 +3,18 @@ package com.kharagedition.englishtibetandictionary.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.kharagedition.englishtibetandictionary.R
 import com.kharagedition.englishtibetandictionary.model.Word
+import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 
-class WordsPagingDataAdapter : PagingDataAdapter<Word, WordsPagingDataAdapter.WordsViewHolder>(
+class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdapter<Word, WordsPagingDataAdapter.WordsViewHolder>(
     WordEntityDiff()
 ) {
 
@@ -27,10 +31,28 @@ class WordsPagingDataAdapter : PagingDataAdapter<Word, WordsPagingDataAdapter.Wo
         var wynie: MaterialTextView = itemView.findViewById(R.id.wynie);
         var english: MaterialTextView = itemView.findViewById(R.id.english);
         var defination: MaterialTextView = itemView.findViewById(R.id.defination);
+        var addToFavIcon: ImageView = itemView.findViewById(R.id.add_fav_icon_white);
         fun bind(word: Word) {
             wynie.text =word.wylie;
             english.text = word.english;
             defination.text = word.defination;
+            word.favourite.apply {
+                if(this==true){
+                    addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
+                }
+            }
+            addToFavIcon.setOnClickListener {
+                word.favourite.apply {
+                    if(this==true){
+                        addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24))
+                        word.favourite = false;
+                    }else{
+                        addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
+                        word.favourite = true;
+                    }
+                    wordViewModel.updateCurrentWord(word)
+                }
+            };
         }
     }
 

@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,12 +16,20 @@ import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textview.MaterialTextView
 import com.kharagedition.englishtibetandictionary.R
 import com.kharagedition.englishtibetandictionary.util.BottomSheetDialog
+import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 
 
 class HomeFragment : Fragment() {
@@ -36,7 +45,12 @@ class HomeFragment : Fragment() {
     private lateinit var pulseAnimation: ObjectAnimator;
     private lateinit var flipFromAnimation: ObjectAnimator;
     private lateinit var flipToAnimation: ObjectAnimator;
+    lateinit var wodTibetan:MaterialTextView;
+    lateinit var wodEnglish:MaterialTextView;
+    lateinit var wodGenerateBtn:MaterialButton;
     lateinit var exitAppIcon: ImageView;
+    private val wordsViewModel: WordsViewModel by activityViewModels();
+
 
 
     override fun onCreateView(
@@ -50,12 +64,24 @@ class HomeFragment : Fragment() {
         initAnimation();
 
         initListener();
+        generateWOD();
+
+
+
         topAnimation = AnimationUtils.loadAnimation(context, R.anim.layout_top_anim)
         layout.startAnimation(topAnimation);
         //rotate anmation
          rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate);
 
         return view;
+    }
+
+    private fun generateWOD() {
+        wordsViewModel.generateWordOfTheDay();
+        wordsViewModel.wordOfDay.observe(viewLifecycleOwner, {
+            wodEnglish.text = it.english;
+            wodTibetan.text = it.defination
+        });
     }
 
     private fun initAnimation() {
@@ -77,11 +103,32 @@ class HomeFragment : Fragment() {
          flipToAnimation.interpolator = AccelerateDecelerateInterpolator()
     }
 
-    private fun initListener() {
-        exitAppIcon.setOnClickListener {
+    private fun showAlertDialog(layout: Int){
+        var adRequest = AdRequest.Builder().build()
+
+        var dialogBuilder = AlertDialog.Builder(context)
+        val layoutView = layoutInflater.inflate(layout, null)
+        val dialogButton: MaterialButton = layoutView.findViewById(R.id.btnDialog)
+        var mAdView:AdView = layoutView.findViewById(R.id.bannerAd2)
+        dialogBuilder.setView(layoutView)
+        var alertDialog = dialogBuilder.create()
+        //alertDialog.window?.setWindowAnimations(R.style.DialogAnimation)
+        mAdView.loadAd(adRequest)
+        alertDialog.window?.attributes?.windowAnimations = R.style.DialogAnimation;
+        alertDialog.show()
+        dialogButton.setOnClickListener {
+            alertDialog.dismiss()
             requireActivity().finishAffinity();
-           /* val sheet =  BottomSheetDialog();
-            sheet.show(requireActivity().supportFragmentManager,"ModalBottomSheet");*/
+        }
+    }
+    private fun initListener() {
+
+        wodGenerateBtn.setOnClickListener {
+            generateWOD();
+        }
+
+        exitAppIcon.setOnClickListener {
+            showAlertDialog(R.layout.dialog_negative_layout);
         };
         // DICTIONARY CARD  ONCLICK LISTENER
         dictionrayCardView.setOnClickListener {
@@ -95,7 +142,7 @@ class HomeFragment : Fragment() {
                     flipToAnimation.start()
                 }
             })
-            flipToAnimation.addListener(object : AnimatorListenerAdapter(){
+            flipToAnimation.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
                     findNavController().navigate(R.id.listFragment)
@@ -110,10 +157,12 @@ class HomeFragment : Fragment() {
                 override fun onAnimationStart(animation: Animation?) {
                     Log.d("TAG", "onAnimationStart: ")
                 }
+
                 override fun onAnimationEnd(animation: Animation?) {
-                    val sheet =  BottomSheetDialog();
-            sheet.show(requireActivity().supportFragmentManager,"ModalBottomSheet");
+                    val sheet = BottomSheetDialog();
+                    sheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet");
                 }
+
                 override fun onAnimationRepeat(animation: Animation?) {
                     Log.d("TAG", "onAnimationRepeat: ")
                 }
@@ -145,6 +194,10 @@ class HomeFragment : Fragment() {
         favouriteIcon = view.findViewById(R.id.fav_icon)
         settingIcon = view.findViewById(R.id.icon_settings)
         exitAppIcon = view.findViewById(R.id.exit_app)
+        wodEnglish = view.findViewById(R.id.wod_en)
+        wodTibetan = view.findViewById(R.id.wod_tb)
+        wodGenerateBtn = view.findViewById(R.id.wod_generate_btn)
+
 
 
     }

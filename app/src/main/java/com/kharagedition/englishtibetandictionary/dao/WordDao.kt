@@ -11,19 +11,27 @@ interface WordDao {
 
     @Query("SELECT * FROM DICTIONARY LIMIT :size ")
     suspend fun getAllWordsFromDictionary(size: Int): List<Word>
+
     @Query("SELECT * FROM DICTIONARY WHERE english like :query ")
-     fun getWordsByQueryDictionary(query: String): Flow<List<Word>>
+     fun getWordsFromDictionaryByQuery(query: String): Flow<List<Word>>
+
+
     @Query("SELECT * FROM DICTIONARY LIMIT 20")
     fun getWords(): Flow<List<Word>>
 
     @Query("SELECT * FROM DICTIONARY  WHERE english=:liked")
     fun getFavouritePrayer(liked: Boolean = true): Flow<List<Word>>
+
     @Query("SELECT * FROM DICTIONARY  WHERE id=:id")
     fun getPrayer(id: Int?): Flow<Word>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(prayer : Word)
+
     @Update
-    suspend fun update(prayer: Word)
-    @Query("SELECT * FROM DICTIONARY  WHERE english=:title LIMIT 1")
-    fun getPrayerByName(title: String?): Flow<Word>
+    suspend fun update(word: Word)
+
+    @Query("SELECT * FROM DICTIONARY WHERE LENGTH(english)>7 ORDER BY RANDOM() LIMIT 1")
+    fun getRandomWord(): Flow<Word>
+
 }

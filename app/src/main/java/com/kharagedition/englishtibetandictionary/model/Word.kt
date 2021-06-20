@@ -14,6 +14,7 @@ class Word(@PrimaryKey(autoGenerate = true)
            var id: Int? = null,
            var wylie:String? = null,
            var english:String? = null,
-           var defination: String? = null,) : Parcelable {
+           var defination: String? = null,
+           var favourite: Boolean? = false,) : Parcelable {
 
 }
