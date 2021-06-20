@@ -6,9 +6,5 @@
         android:icon="@drawable/ic_action_search"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
-    <item android:title="About us"
-        android:id="@+id/about_us"/>
-    <item android:title="Exit"
-        android:id="@+id/exit"/>
 
 </menu>

@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     companion object{
         var TAG = MainActivity::class.java.name
     }
-    lateinit var commonToolbar: MaterialToolbar;
     private lateinit var viewModel: WordsViewModel
 
 
@@ -42,44 +41,8 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun initViews() {
-        commonToolbar = findViewById(R.id.common_toolbar);
         viewModel = ViewModelProvider(this).get(WordsViewModel::class.java)
-        setSupportActionBar(commonToolbar)
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.option_menu,menu)
-        var searchItem = menu?.findItem(R.id.action_search);
-        var searchView = searchItem?.actionView as SearchView;
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.filterData(query);
-                Log.i(TAG,"Llego al querysubmit $query")
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                Log.i(TAG,"Llego al querytextchange")
-                return true
-            }
-        })
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-
-            R.id.about_us ->{
-                val sheet =  BottomSheetDialog();
-                sheet.show(supportFragmentManager,"ModalBottomSheet");
-            }
-            R.id.exit ->{
-                finishAffinity()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 }
