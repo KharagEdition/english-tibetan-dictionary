@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
@@ -21,6 +23,7 @@ import com.kharagedition.englishtibetandictionary.adapter.WordsPagingDataAdapter
 import com.kharagedition.englishtibetandictionary.util.BottomSheetDialog
 import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.launch
 
 
@@ -30,13 +33,14 @@ class ListFragment : Fragment() {
     lateinit var wordRecyclerView: RecyclerView;
     private val wordsViewModel: WordsViewModel by activityViewModels();
     private val pagingAdapter by lazy { WordsPagingDataAdapter(wordsViewModel) }
-
+     private var diplayFavWordsFavourite: Boolean? = false;
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         var view =  inflater.inflate(R.layout.fragment_list, container, false)
+        diplayFavWordsFavourite = arguments?.getBoolean("favourite")
         initViews(view);
         setHasOptionsMenu(true);
         var adRequest = AdRequest.Builder().build()
@@ -53,6 +57,17 @@ class ListFragment : Fragment() {
         val searchView = searchItem?.actionView as SearchView;
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                if(query!=null){
+                    wordsViewModel.filterData(query);
+                    wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                        lifecycleScope.launch {
+                            wordsViewModel.queryWordsList.collectLatest {
+                                pagingAdapter.submitData(it)
+                            }
+                        }
+                    })
+
+                }
                 /*lifecycleScope.launch {
                     wordsViewModel.filteredData(query).collectLatest {
                         pagingAdapter.submitData(it)
@@ -62,8 +77,17 @@ class ListFragment : Fragment() {
                 return false
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                Log.i(MainActivity.TAG,"Llego al querytextchange")
+            override fun onQueryTextChange(query: String): Boolean {
+                if(query.length>2){
+                    wordsViewModel.filterData(query);
+                    wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                        lifecycleScope.launch {
+                            wordsViewModel.queryWordsList.collectLatest {
+                                pagingAdapter.submitData(it)
+                            }
+                        }
+                    })
+                }
                 return true
             }
         })
@@ -101,13 +125,21 @@ class ListFragment : Fragment() {
         }
 
         Log.d(MainActivity.TAG, "addListener: ");
-        lifecycleScope.launch {
-            wordsViewModel.wordsList.collectLatest { source -> pagingAdapter.submitData(source) }
+        if(diplayFavWordsFavourite!=null && diplayFavWordsFavourite==true){
+            lifecycleScope.launch {
+                wordsViewModel.favWordsList.collectLatest {
+                    pagingAdapter.submitData(it)
+                }
+            }
+        }else{
+            lifecycleScope.launch {
+                wordsViewModel.wordsList.collectLatest {
+                    pagingAdapter.submitData(it)
+                }
+            }
         }
 
-        wordsViewModel.wordOfDay.observe(viewLifecycleOwner, Observer {
-            Log.e("TAG", "WODAY: ${it.english}", )
-        });
+
     }
 
 }

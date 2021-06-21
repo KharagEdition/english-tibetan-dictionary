@@ -1,9 +1,6 @@
 package com.kharagedition.englishtibetandictionary.ui
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
+import android.animation.*
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -16,13 +13,12 @@ import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.view.size
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
@@ -34,11 +30,13 @@ import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 
 class HomeFragment : Fragment() {
     lateinit var topAnimation : Animation;
-    lateinit var layout: LinearLayout;
+    lateinit var wodLinearLayout: LinearLayout;
     lateinit var settingCardView: MaterialCardView;
+    lateinit var aboutCardView: MaterialCardView;
     private lateinit var favouriteCardView: MaterialCardView;
     lateinit var dictionrayCardView: MaterialCardView;
     private lateinit var settingIcon: ImageView;
+    private lateinit var aboutIcon: ImageView;
     lateinit var favouriteIcon: ImageView;
     lateinit var dictionaryIcon: ImageView;
     private lateinit var rotation: Animation;
@@ -62,14 +60,15 @@ class HomeFragment : Fragment() {
 
         initView(view);
         initAnimation();
-
+        val layoutTransition: LayoutTransition = wodLinearLayout.layoutTransition
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         initListener();
         generateWOD();
 
 
 
         topAnimation = AnimationUtils.loadAnimation(context, R.anim.layout_top_anim)
-        layout.startAnimation(topAnimation);
+        wodLinearLayout.startAnimation(topAnimation);
         //rotate anmation
          rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate);
 
@@ -145,7 +144,8 @@ class HomeFragment : Fragment() {
             flipToAnimation.addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
-                    findNavController().navigate(R.id.listFragment)
+                    val bundle = bundleOf("favourite" to false)
+                    findNavController().navigate(R.id.listFragment,bundle)
                 }
             })
             //
@@ -170,6 +170,26 @@ class HomeFragment : Fragment() {
             //findNavController().navigate(R.id.listFragment)
 
         };
+        // ABOUT CARD ONCLICK LISTENER
+        aboutCardView.setOnClickListener {
+            aboutIcon.startAnimation(rotation);
+            rotation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation?) {
+                    Log.d("TAG", "onAnimationStart: ")
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    val sheet = BottomSheetDialog();
+                    sheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet");
+                }
+
+                override fun onAnimationRepeat(animation: Animation?) {
+                    Log.d("TAG", "onAnimationRepeat: ")
+                }
+            })
+            //findNavController().navigate(R.id.listFragment)
+
+        };
         // FAVOURITE CARD ONCLICK LISTENER
         favouriteCardView.setOnClickListener {
             pulseAnimation.start();
@@ -177,7 +197,8 @@ class HomeFragment : Fragment() {
         pulseAnimation.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animator: Animator) {}
             override fun onAnimationEnd(animator: Animator) {
-                findNavController().navigate(R.id.listFragment)
+                val bundle = bundleOf("favourite" to true)
+                findNavController().navigate(R.id.listFragment,bundle)
             }
 
             override fun onAnimationCancel(animator: Animator) {}
@@ -186,17 +207,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView(view: View) {
-        layout = view.findViewById(R.id.linearLayout)
         dictionrayCardView = view.findViewById(R.id.dictionary_card_view)
         favouriteCardView = view.findViewById(R.id.favourite_card_view)
         settingCardView = view.findViewById(R.id.setting_card_view)
+        aboutCardView = view.findViewById(R.id.about_card_view)
         dictionaryIcon = view.findViewById(R.id.dictionary_icon)
         favouriteIcon = view.findViewById(R.id.fav_icon)
-        settingIcon = view.findViewById(R.id.icon_settings)
+        settingIcon = view.findViewById(R.id.icon_setting)
+        aboutIcon = view.findViewById(R.id.icon_about)
         exitAppIcon = view.findViewById(R.id.exit_app)
         wodEnglish = view.findViewById(R.id.wod_en)
         wodTibetan = view.findViewById(R.id.wod_tb)
         wodGenerateBtn = view.findViewById(R.id.wod_generate_btn)
+        wodLinearLayout = view.findViewById(R.id.wodLinearLayout)
 
 
 

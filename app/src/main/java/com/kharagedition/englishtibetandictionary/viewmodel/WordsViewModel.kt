@@ -8,7 +8,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.kharagedition.englishtibetandictionary.dao.WordDao
 import com.kharagedition.englishtibetandictionary.model.Word
-import com.kharagedition.englishtibetandictionary.util.WordsPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,15 +18,28 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class WordsViewModel @Inject constructor(private var wordDao: WordDao, var context: Context) : ViewModel() {
-    var searchList: LiveData<List<Word>> =MutableLiveData();
+    var liveQuery: MutableLiveData<String> =MutableLiveData<String>()
     var wordOfDay : LiveData<Word> =MutableLiveData()
-    val wordsList = Pager(PagingConfig(10)) { WordsPagingSource(wordDao) }
+    //GET ALL WORDS
+    val wordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getAllWordsFromDictionary()})
         .flow
         .cachedIn(viewModelScope)
+            /*.map { pagingData ->
+                pagingData.filter {it->
+                     it.favourite==true;
+                }
+            }*/
+    //GET FAV WORDS
+            val favWordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getFavWordsFromDictionary(true)})
+                    .flow
+                    .cachedIn(viewModelScope)
+    //GET QUERY WORDS
+    val queryWordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getQueryWordsFromDictionary(liveQuery.value)})
+            .flow
 
     // filter list of data when query submitted
     fun filterData(query: String) {
-        searchList =   wordDao.getWordsFromDictionaryByQuery(query).asLiveData()
+        liveQuery.postValue(query);
     }
     //UPDATE WORDS
     fun updateCurrentWord(word: Word){
@@ -40,5 +52,7 @@ class WordsViewModel @Inject constructor(private var wordDao: WordDao, var conte
         Log.e("TAG", "generateWordOfTheDay: ", )
         wordOfDay =wordDao.getRandomWord().asLiveData()
     }
+
+    val words = wordDao.getWords().asLiveData()
 
 }

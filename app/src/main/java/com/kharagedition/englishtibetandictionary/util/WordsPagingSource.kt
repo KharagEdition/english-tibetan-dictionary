@@ -1,5 +1,6 @@
 package com.kharagedition.englishtibetandictionary.util
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.kharagedition.englishtibetandictionary.dao.WordDao
@@ -8,6 +9,7 @@ import com.kharagedition.englishtibetandictionary.model.Word
 /**
  * Created by kharag on 18,June,2021
  */
+/*
 
 class WordsPagingSource(private val wordDao: WordDao) : PagingSource<Int, Word>() {
 
@@ -18,6 +20,7 @@ class WordsPagingSource(private val wordDao: WordDao) : PagingSource<Int, Word>(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Word> {
         val position = params.key ?: INITIAL_PAGE_INDEX
         val randomWords = wordDao.getAllWordsFromDictionary(params.loadSize)
+        Log.e("TAG", "load:SIZEE ${randomWords.size}", )
         return LoadResult.Page(
             data = randomWords,
             prevKey = if (position == INITIAL_PAGE_INDEX) null else position - 1,
@@ -26,4 +29,4 @@ class WordsPagingSource(private val wordDao: WordDao) : PagingSource<Int, Word>(
     }
 
     override fun getRefreshKey(state: PagingState<Int, Word>): Int? = null
-}
+}*/

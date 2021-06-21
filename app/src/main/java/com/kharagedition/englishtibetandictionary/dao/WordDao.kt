@@ -1,5 +1,6 @@
 package com.kharagedition.englishtibetandictionary.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import com.kharagedition.englishtibetandictionary.model.Word
@@ -9,14 +10,21 @@ import com.kharagedition.englishtibetandictionary.model.Word
 @Dao
 interface WordDao {
 
-    @Query("SELECT * FROM DICTIONARY LIMIT :size ")
-    suspend fun getAllWordsFromDictionary(size: Int): List<Word>
+    @Query("SELECT * FROM DICTIONARY ")
+     fun getAllWordsFromDictionary(): PagingSource<Int, Word>
+
+    @Query("SELECT * FROM DICTIONARY WHERE favourite =:isFavourite ")
+    fun getFavWordsFromDictionary(isFavourite: Boolean): PagingSource<Int, Word>
+
+    @Query("SELECT * FROM DICTIONARY WHERE UPPER(english) like UPPER(:query) || '%'")
+    fun getQueryWordsFromDictionary(query: String?): PagingSource<Int, Word>
+
 
     @Query("SELECT * FROM DICTIONARY WHERE english like :query ")
      fun getWordsFromDictionaryByQuery(query: String): Flow<List<Word>>
 
 
-    @Query("SELECT * FROM DICTIONARY LIMIT 20")
+    @Query("SELECT * FROM DICTIONARY")
     fun getWords(): Flow<List<Word>>
 
     @Query("SELECT * FROM DICTIONARY  WHERE english=:liked")

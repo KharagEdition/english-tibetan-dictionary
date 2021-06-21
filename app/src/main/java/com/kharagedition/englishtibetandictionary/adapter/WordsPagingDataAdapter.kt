@@ -14,8 +14,17 @@ import com.kharagedition.englishtibetandictionary.R
 import com.kharagedition.englishtibetandictionary.model.Word
 import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 
+val WORD_COMPARATOR = object : DiffUtil.ItemCallback<Word>() {
+    override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean =
+            // User ID serves as unique ID
+            oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean =
+            // Compare full contents (note: Java users should call .equals())
+            oldItem == newItem
+}
 class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdapter<Word, WordsPagingDataAdapter.WordsViewHolder>(
-    WordEntityDiff()
+        WORD_COMPARATOR
 ) {
 
     override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
@@ -36,28 +45,23 @@ class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdap
             wynie.text =word.wylie;
             english.text = word.english;
             defination.text = word.defination;
-            word.favourite.apply {
-                if(this==true){
-                    addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
-                }
+            if(word.favourite!=null && word.favourite==true){
+                addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
+            }else{
+                addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24))
+
             }
             addToFavIcon.setOnClickListener {
-                word.favourite.apply {
-                    if(this==true){
-                        addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24))
-                        word.favourite = false;
-                    }else{
-                        addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
-                        word.favourite = true;
-                    }
-                    wordViewModel.updateCurrentWord(word)
+                if(word.favourite==true){
+                    addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24))
+                    word.favourite = false;
+                }else{
+                    addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
+                    word.favourite = true;
                 }
+                wordViewModel.updateCurrentWord(word)
             };
         }
     }
 
-    class WordEntityDiff : DiffUtil.ItemCallback<Word>() {
-        override fun areItemsTheSame(oldItem: Word, newItem: Word): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Word, newItem: Word): Boolean = oldItem == newItem
-    }
 }
