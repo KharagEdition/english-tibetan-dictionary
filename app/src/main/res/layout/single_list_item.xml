@@ -7,7 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         app:cardElevation="5dp"
-        android:background="@color/brown_700"
+        android:background="@color/brown_500"
         app:strokeColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:background="@color/brown_700"
+            android:background="@color/brown_500"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

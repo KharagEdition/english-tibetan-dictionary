@@ -16,6 +16,9 @@ class CommonUtils {
        var FACEBOOK_URL = "https://www.facebook.com/techtibet";
        var GITHUB_URL = "https://github.com/CodingWithTashi/Tibetan-Prayer-App";
        var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer";
+       var PLAY_STORE_DAILY_PRAYER_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer";
+       var PLAY_STORE_CALENDAR_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender";
+
        var PAYPAL_URL = "https://www.paypal.com/paypalme/kontashi35"
 
        fun displaySnackBar(view: View, msg:String){

@@ -41,6 +41,7 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         var view =  inflater.inflate(R.layout.fragment_list, container, false)
         diplayFavWordsFavourite = arguments?.getBoolean("favourite")
+
         initViews(view);
         setHasOptionsMenu(true);
         var adRequest = AdRequest.Builder().build()
@@ -52,45 +53,50 @@ class ListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear();
-        inflater.inflate(R.menu.option_menu, menu)
-        val searchItem = menu.findItem(R.id.action_search);
-        val searchView = searchItem?.actionView as SearchView;
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if(query!=null){
-                    wordsViewModel.filterData(query);
-                    wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
-                        lifecycleScope.launch {
-                            wordsViewModel.queryWordsList.collectLatest {
-                                pagingAdapter.submitData(it)
+        if(diplayFavWordsFavourite==null || diplayFavWordsFavourite == false){
+            inflater.inflate(R.menu.option_menu, menu)
+            val searchItem = menu.findItem(R.id.action_search);
+            val searchView = searchItem?.actionView as SearchView;
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if(query!=null){
+                        wordsViewModel.filterData(query);
+                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                            lifecycleScope.launch {
+                                wordsViewModel.queryWordsList.collectLatest {
+                                    pagingAdapter.submitData(it)
+                                }
                             }
-                        }
-                    })
+                        })
 
-                }
-                /*lifecycleScope.launch {
-                    wordsViewModel.filteredData(query).collectLatest {
-                        pagingAdapter.submitData(it)
                     }
-                }*/
-                Log.i(MainActivity.TAG,"Llego al querysubmit $query")
-                return false
-            }
-
-            override fun onQueryTextChange(query: String): Boolean {
-                if(query.length>2){
-                    wordsViewModel.filterData(query);
-                    wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
-                        lifecycleScope.launch {
-                            wordsViewModel.queryWordsList.collectLatest {
-                                pagingAdapter.submitData(it)
-                            }
+                    /*lifecycleScope.launch {
+                        wordsViewModel.filteredData(query).collectLatest {
+                            pagingAdapter.submitData(it)
                         }
-                    })
+                    }*/
+                    Log.i(MainActivity.TAG,"Llego al querysubmit $query")
+                    return false
                 }
-                return true
-            }
-        })
+
+                override fun onQueryTextChange(query: String): Boolean {
+                    if(query.length>2){
+                        wordsViewModel.filterData(query);
+                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                            lifecycleScope.launch {
+                                wordsViewModel.queryWordsList.collectLatest {
+                                    pagingAdapter.submitData(it)
+                                }
+                            }
+                        })
+                    }
+                    return true
+                }
+            })
+        }else{
+            commonToolbar.title = "Favourite"
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 

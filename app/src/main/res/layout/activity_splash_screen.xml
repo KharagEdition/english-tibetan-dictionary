@@ -24,7 +24,7 @@
         android:id="@+id/splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="5dp"
         android:text="English Tibetan\nDictionary"
         android:textAlignment="center"
         android:textColor="@android:color/white"

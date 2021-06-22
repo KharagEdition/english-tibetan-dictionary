@@ -22,7 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
     lateinit var version: TextView;
     lateinit var textView: TextView;
     lateinit var progressBar: ProgressBar;
-    var  SECOND : Long = 2500;
+    var  SECOND : Long = 1500;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

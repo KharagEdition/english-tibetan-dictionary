@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/brown_700">
+    android:background="@color/yellow_200">
     <com.google.android.material.appbar.MaterialToolbar
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
@@ -43,7 +43,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/brown_700"
+                android:background="@color/yellow_200"
                 tools:context=".ui.activity.AboutUsActivity">
 
                 <ScrollView
@@ -135,6 +135,109 @@
                                         app:icon="@drawable/ic_baseline_star_rate_24"
                                         android:layout_marginRight="8dp" />
                                 </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/more_app_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="More from KharagEdition:"
+                                        android:textColor="@color/brown_700"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        />
+                                    <View
+                                        android:layout_marginTop="5dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@android:color/darker_gray"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:weightSum="2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_weight="1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:layout_width="90dp"
+                                            android:layout_height="90dp"
+                                            android:elevation="4dp"
+                                            app:srcCompat="@drawable/prayer"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Daily Prayer "
+                                            android:textAppearance="?attr/textAppearanceHeadline6"
+                                            android:textColor="@color/brown_700" />
+
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/download_prayer"
+                                            style="?attr/borderlessButtonStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="Download"
+                                            app:icon="@drawable/ic_baseline_download_24" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_weight="1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+                                        <ImageView
+                                            android:layout_width="90dp"
+                                            android:layout_height="90dp"
+                                            android:elevation="4dp"
+                                            android:scaleType="centerCrop"
+                                            app:srcCompat="@drawable/calendar"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tibetan Calendar"
+                                            android:textAppearance="?attr/textAppearanceHeadline6"
+                                            android:textColor="@color/brown_700" />
+
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/download_calendar"
+                                            style="?attr/borderlessButtonStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Download"
+                                            app:icon="@drawable/ic_baseline_download_24" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
 
                             </LinearLayout>
 

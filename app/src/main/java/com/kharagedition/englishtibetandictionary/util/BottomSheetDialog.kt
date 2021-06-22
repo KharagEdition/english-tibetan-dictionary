@@ -20,6 +20,8 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
     lateinit var gitHubBtn: MaterialButton;
     lateinit var instaBtn: MaterialButton;
     lateinit var facebookBtn: MaterialButton;
+    lateinit var downloadPrayer: MaterialButton;
+    lateinit var downloadCalender: MaterialButton;
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +39,8 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
         gitHubBtn = view.findViewById(R.id.github)
         instaBtn = view.findViewById(R.id.instagram)
         facebookBtn = view.findViewById(R.id.facebook)
+        downloadCalender = view.findViewById(R.id.download_calendar)
+        downloadPrayer = view.findViewById(R.id.download_prayer)
 
         backIcon.setOnClickListener(this);
         shareBtn.setOnClickListener(this);
@@ -45,6 +49,8 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
         gitHubBtn.setOnClickListener(this);
         instaBtn.setOnClickListener(this);
         facebookBtn.setOnClickListener(this);
+        downloadCalender.setOnClickListener(this);
+        downloadPrayer.setOnClickListener(this);
         return view;
     }
     override fun onClick(v: View?) {
@@ -87,6 +93,12 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
             }
             R.id.facebook->{
                 openView(CommonUtils.FACEBOOK_URL);
+            }
+            R.id.download_prayer->{
+                openView(CommonUtils.PLAY_STORE_DAILY_PRAYER_URL)
+            }
+            R.id.download_calendar->{
+                openView(CommonUtils.PLAY_STORE_CALENDAR_URL)
             }
         }
     }

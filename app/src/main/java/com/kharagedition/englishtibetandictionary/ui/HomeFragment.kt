@@ -2,6 +2,7 @@ package com.kharagedition.englishtibetandictionary.ui
 
 import android.animation.*
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -159,8 +160,8 @@ class HomeFragment : Fragment() {
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-                    val sheet = BottomSheetDialog();
-                    sheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet");
+                    startActivity(Intent(activity,SettingActivity::class.java));
+                    //activity?.overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left,)
                 }
 
                 override fun onAnimationRepeat(animation: Animation?) {
