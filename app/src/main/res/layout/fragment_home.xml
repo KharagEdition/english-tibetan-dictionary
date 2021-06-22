@@ -8,34 +8,17 @@
     tools:context=".ui.HomeFragment"
     android:background="@color/yellow_200">
 
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:id="@+id/home_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/ic_wave__top_toolbar"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-        <ImageView
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_home_24"
-            android:layout_marginLeft="10dp" />
-    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         card_view:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         card_view:layout_constraintLeft_toLeftOf="parent"
-        card_view:layout_constraintRight_toRightOf="parent"
-        card_view:layout_constraintTop_toBottomOf="@+id/home_toolbar">
+        card_view:layout_constraintRight_toRightOf="parent">
 
         <LinearLayout
+            android:paddingTop="60dp"
+            android:paddingBottom="80dp"
             android:gravity="center"
             android:clipToPadding="false"
             android:layout_width="match_parent"
@@ -59,7 +42,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/brown_700"
+                app:cardBackgroundColor="@color/brown_500"
                 card_view:cardCornerRadius="10dp"
                 card_view:cardElevation="5dp"
                 card_view:cardPreventCornerOverlap="false"
@@ -99,7 +82,7 @@
                             android:layout_width="85dp"
                             android:layout_height="85dp"
                             android:layout_marginTop="20dp"
-                            app:cardBackgroundColor="@color/brown_700"
+                            app:cardBackgroundColor="@color/brown_500"
                             card_view:cardCornerRadius="4dp"
                             card_view:cardElevation="5dp"
                             card_view:cardPreventCornerOverlap="false"
@@ -144,7 +127,7 @@
                             android:layout_width="85dp"
                             android:layout_height="85dp"
                             android:layout_marginTop="20dp"
-                            app:cardBackgroundColor="@color/brown_700"
+                            app:cardBackgroundColor="@color/brown_500"
                             card_view:cardCornerRadius="4dp"
                             card_view:cardElevation="5dp"
                             card_view:cardPreventCornerOverlap="false"
@@ -190,7 +173,7 @@
                             android:layout_width="85dp"
                             android:layout_height="85dp"
                             android:layout_marginTop="20dp"
-                            app:cardBackgroundColor="@color/brown_700"
+                            app:cardBackgroundColor="@color/brown_500"
                             card_view:cardCornerRadius="4dp"
                             card_view:cardElevation="5dp"
                             card_view:cardPreventCornerOverlap="false"
@@ -234,7 +217,7 @@
                             android:layout_width="85dp"
                             android:layout_height="85dp"
                             android:layout_marginTop="20dp"
-                            app:cardBackgroundColor="@color/brown_700"
+                            app:cardBackgroundColor="@color/brown_500"
                             card_view:cardCornerRadius="4dp"
                             card_view:cardElevation="5dp"
                             card_view:cardPreventCornerOverlap="false"
@@ -273,7 +256,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:animateLayoutChanges="true"
                 android:clipToPadding="false"
-                card_view:cardBackgroundColor="@color/brown_700"
+                card_view:cardBackgroundColor="@color/brown_500"
                 android:padding="15dp"
                 android:layout_margin="20dp"
                 card_view:cardCornerRadius="10dp"
@@ -328,6 +311,25 @@
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:elevation="5dp"
+        android:gravity="center_vertical"
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_wave__top_toolbar"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_home_24"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
     <LinearLayout
         android:gravity="end|center_vertical"
         android:id="@+id/linearLayout2"
