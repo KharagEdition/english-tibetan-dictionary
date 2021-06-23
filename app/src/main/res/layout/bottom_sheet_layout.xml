@@ -5,42 +5,42 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/yellow_200">
-    <com.google.android.material.appbar.MaterialToolbar
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/bottom_about_toolbar"
-        android:layout_width="match_parent"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
-        android:layout_height="?attr/actionBarSize">
-
-        <ImageView
-            android:padding="10dp"
-            android:id="@+id/back_icon"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:textColor="@color/white"
-            android:paddingStart="10dp"
-            android:textSize="22sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="About Us"
-            android:paddingLeft="10dp" />
-    </com.google.android.material.appbar.MaterialToolbar>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_below="@+id/bottom_about_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:minHeight="?attr/actionBarSize"
+            android:elevation="5dp"
+            android:gravity="center_vertical"
+            android:id="@+id/bottom_about_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/ic_wave__top_toolbar"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/back_icon"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:textColor="@color/white"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Us" />
+        </LinearLayout>
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <RelativeLayout
+                android:paddingTop="60dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/yellow_200"
@@ -185,11 +185,12 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
                                         <ImageView
-                                            android:layout_width="90dp"
-                                            android:layout_height="90dp"
+                                            android:layout_width="75dp"
+                                            android:layout_height="75dp"
                                             android:elevation="4dp"
                                             app:srcCompat="@drawable/prayer"/>
                                         <TextView
+                                            android:textSize="16sp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Daily Prayer "
@@ -201,7 +202,6 @@
                                             style="?attr/borderlessButtonStyle"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1"
                                             android:text="Download"
                                             app:icon="@drawable/ic_baseline_download_24" />
                                     </LinearLayout>
@@ -213,13 +213,14 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
                                         <ImageView
-                                            android:layout_width="90dp"
-                                            android:layout_height="90dp"
+                                            android:layout_width="75dp"
+                                            android:layout_height="75dp"
                                             android:elevation="4dp"
                                             android:scaleType="centerCrop"
                                             app:srcCompat="@drawable/calendar"/>
 
                                         <TextView
+                                            android:textSize="16sp"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Tibetan Calendar"

@@ -21,6 +21,7 @@ import com.kharagedition.englishtibetandictionary.MainActivity
 import com.kharagedition.englishtibetandictionary.R
 import com.kharagedition.englishtibetandictionary.adapter.WordsPagingDataAdapter
 import com.kharagedition.englishtibetandictionary.util.BottomSheetDialog
+import com.kharagedition.englishtibetandictionary.util.BounceEdgeEffectFactory
 import com.kharagedition.englishtibetandictionary.viewmodel.WordsViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -127,6 +128,7 @@ class ListFragment : Fragment() {
         wordRecyclerView.apply {
             layoutManager = LinearLayoutManager(context);
             adapter = pagingAdapter
+            edgeEffectFactory = BounceEdgeEffectFactory()
             setHasFixedSize(true)
         }
 
