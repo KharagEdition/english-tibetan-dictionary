@@ -16,7 +16,5 @@ class Word(@PrimaryKey(autoGenerate = true)
            var english:String? = null,
            var defination: String? = null,
            var favourite: Boolean? = false,) : Parcelable {
-    override fun equals(other: Any?): Boolean {
-        return super.equals(other)
-    }
+
 }

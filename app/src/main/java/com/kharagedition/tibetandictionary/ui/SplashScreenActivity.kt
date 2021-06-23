@@ -16,13 +16,15 @@ import android.widget.TextView
 import com.kharagedition.tibetandictionary.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
-    lateinit var topAnimation :Animation ;
-    lateinit var bottomAnimation: Animation;
-    lateinit var image: ImageView;
-    lateinit var version: TextView;
-    lateinit var textView: TextView;
-    lateinit var progressBar: ProgressBar;
-    var  SECOND : Long = 1500;
+    lateinit var topAnimation :Animation 
+    lateinit var bottomAnimation: Animation
+    lateinit var image: ImageView
+    lateinit var version: TextView
+    lateinit var textView: TextView
+    lateinit var progressBar: ProgressBar
+    companion object {
+        private var  SECOND : Long = 1500
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -30,15 +32,15 @@ class SplashScreenActivity : AppCompatActivity() {
 
         topAnimation = AnimationUtils.loadAnimation(this,R.anim.top_animation)
         bottomAnimation = AnimationUtils.loadAnimation(this,R.anim.bottom_animation)
-        image = findViewById(R.id.splash_image);
-        textView = findViewById(R.id.splash_text);
-        version = findViewById(R.id.version);
-        progressBar = findViewById(R.id.splash_progress);
+        image = findViewById(R.id.splash_image)
+        textView = findViewById(R.id.splash_text)
+        version = findViewById(R.id.version)
+        progressBar = findViewById(R.id.splash_progress)
 
         image.animation =topAnimation
         textView.animation = bottomAnimation
         //progressBar.animation = bottomAnimation
-        setVersion();
+        setVersion()
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -49,7 +51,7 @@ class SplashScreenActivity : AppCompatActivity() {
         try {
             val versionName: String = this.packageManager
                 .getPackageInfo(this.packageName, 0).versionName
-            version.text = "Version: $versionName";
+            version.text = "Version: $versionName"
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }

@@ -20,12 +20,12 @@ class SettingActivity : AppCompatActivity() {
                 )
                 .commit()
         }
-        initListener();
+        initListener()
 
     }
     private fun initListener() {
         materialToolbar.setOnClickListener{
-            finish();
+            finish()
         }
     }
 

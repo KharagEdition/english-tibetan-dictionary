@@ -13,15 +13,15 @@ import com.kharagedition.tibetandictionary.R
 
 
 class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
-    lateinit var backIcon: ImageView;
-    lateinit var shareBtn: MaterialButton;
-    lateinit var rateBtn: MaterialButton;
-    lateinit var gmailBtn: MaterialButton;
-    lateinit var gitHubBtn: MaterialButton;
-    lateinit var instaBtn: MaterialButton;
-    lateinit var facebookBtn: MaterialButton;
-    lateinit var downloadPrayer: MaterialButton;
-    lateinit var downloadCalender: MaterialButton;
+    lateinit var backIcon: ImageView
+    lateinit var shareBtn: MaterialButton
+    lateinit var rateBtn: MaterialButton
+    lateinit var gmailBtn: MaterialButton
+    lateinit var gitHubBtn: MaterialButton
+    lateinit var instaBtn: MaterialButton
+    lateinit var facebookBtn: MaterialButton
+    lateinit var downloadPrayer: MaterialButton
+    lateinit var downloadCalender: MaterialButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,16 +42,16 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
         downloadCalender = view.findViewById(R.id.download_calendar)
         downloadPrayer = view.findViewById(R.id.download_prayer)
 
-        backIcon.setOnClickListener(this);
-        shareBtn.setOnClickListener(this);
-        rateBtn.setOnClickListener(this);
-        gmailBtn.setOnClickListener(this);
-        gitHubBtn.setOnClickListener(this);
-        instaBtn.setOnClickListener(this);
-        facebookBtn.setOnClickListener(this);
-        downloadCalender.setOnClickListener(this);
-        downloadPrayer.setOnClickListener(this);
-        return view;
+        backIcon.setOnClickListener(this)
+        shareBtn.setOnClickListener(this)
+        rateBtn.setOnClickListener(this)
+        gmailBtn.setOnClickListener(this)
+        gitHubBtn.setOnClickListener(this)
+        instaBtn.setOnClickListener(this)
+        facebookBtn.setOnClickListener(this)
+        downloadCalender.setOnClickListener(this)
+        downloadPrayer.setOnClickListener(this)
+        return view
     }
     override fun onClick(v: View?) {
         when(v?.id){
@@ -71,7 +71,7 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
                     startActivity(Intent.createChooser(shareIntent, "choose one"))
                 } catch (e: Exception) {
-                    //e.toString();
+                    //e.toString()
                 }
             }
             R.id.rate->{
@@ -79,20 +79,20 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
             }
             R.id.gmail->{
                 val intent = Intent(Intent.ACTION_SENDTO)
-                intent.type = "text/plain";
-                intent.data = Uri.parse("mailto:developer.kharag@gmail.com");
+                intent.type = "text/plain"
+                intent.data = Uri.parse("mailto:developer.kharag@gmail.com")
                 //intent.putExtra(Intent.EXTRA_EMAIL, "developer.kharag@gmail.com")
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Prayer Request")
                 startActivity(Intent.createChooser(intent, "Send Email"))
             }
             R.id.github->{
-                openView(CommonUtils.GITHUB_URL);
+                openView(CommonUtils.GITHUB_URL)
             }
             R.id.instagram->{
-                openView(CommonUtils.INSTAGRAM_URL);
+                openView(CommonUtils.INSTAGRAM_URL)
             }
             R.id.facebook->{
-                openView(CommonUtils.FACEBOOK_URL);
+                openView(CommonUtils.FACEBOOK_URL)
             }
             R.id.download_prayer->{
                 openView(CommonUtils.PLAY_STORE_DAILY_PRAYER_URL)

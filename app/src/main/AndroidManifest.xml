@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.EnglishTibetanDictionary">
-        <activity android:name="com.kharagedition.tibetandictionary.ui.SettingActivity"></activity>
+        <activity android:name="com.kharagedition.tibetandictionary.ui.SettingActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

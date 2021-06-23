@@ -31,19 +31,19 @@ class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
-        val view =  LayoutInflater.from(parent.context).inflate(R.layout.single_list_item,parent,false);
-        return WordsViewHolder(view);
+        val view =  LayoutInflater.from(parent.context).inflate(R.layout.single_list_item,parent,false)
+        return WordsViewHolder(view)
     }
 
     inner class WordsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var wynie: MaterialTextView = itemView.findViewById(R.id.wynie);
-        var english: MaterialTextView = itemView.findViewById(R.id.english);
-        var defination: MaterialTextView = itemView.findViewById(R.id.defination);
-        var addToFavIcon: ImageView = itemView.findViewById(R.id.add_fav_icon_white);
+        var wynie: MaterialTextView = itemView.findViewById(R.id.wynie)
+        var english: MaterialTextView = itemView.findViewById(R.id.english)
+        var defination: MaterialTextView = itemView.findViewById(R.id.defination)
+        var addToFavIcon: ImageView = itemView.findViewById(R.id.add_fav_icon_white)
         fun bind(word: Word) {
-            wynie.text =word.wylie;
-            english.text = word.english;
-            defination.text = word.defination;
+            wynie.text =word.wylie
+            english.text = word.english
+            defination.text = word.defination
             if(word.favourite!=null && word.favourite==true){
                 addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
             }else{
@@ -53,13 +53,13 @@ class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdap
             addToFavIcon.setOnClickListener {
                 if(word.favourite==true){
                     addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24))
-                    word.favourite = false;
+                    word.favourite = false
                 }else{
                     addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
-                    word.favourite = true;
+                    word.favourite = true
                 }
                 wordViewModel.updateCurrentWord(word)
-            };
+            }
         }
     }
 

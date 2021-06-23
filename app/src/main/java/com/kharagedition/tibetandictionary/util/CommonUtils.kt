@@ -12,20 +12,20 @@ import java.util.*
 
 class CommonUtils {
    companion object {
-       var INSTAGRAM_URL = "https://www.instagram.com/kontashi35/";
-       var FACEBOOK_URL = "https://www.facebook.com/techtibet";
-       var GITHUB_URL = "https://github.com/CodingWithTashi/Tibetan-Prayer-App";
-       var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer";
-       var PLAY_STORE_DAILY_PRAYER_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer";
-       var PLAY_STORE_CALENDAR_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender";
+       var INSTAGRAM_URL = "https://www.instagram.com/kontashi35/"
+       var FACEBOOK_URL = "https://www.facebook.com/techtibet"
+       var GITHUB_URL = "https://github.com/CodingWithTashi/Tibetan-Prayer-App"
+       var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer"
+       var PLAY_STORE_DAILY_PRAYER_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer"
+       var PLAY_STORE_CALENDAR_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender"
 
        var PAYPAL_URL = "https://www.paypal.com/paypalme/kontashi35"
 
        fun displaySnackBar(view: View, msg:String){
-           Snackbar.make(view,msg,Snackbar.LENGTH_SHORT).show();
+           Snackbar.make(view,msg,Snackbar.LENGTH_SHORT).show()
        }
        fun displayShortMessage(context: Context,msg: String){
-           Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+           Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
        }
        fun formatDateFromDate(date:Date): String {
            val format = SimpleDateFormat("hh:mm:a")
@@ -49,7 +49,7 @@ class CommonUtils {
                    return netInfo != null && netInfo.isConnectedOrConnecting
                }
            }
-        return  false;
+        return  false
        }
    }
 }

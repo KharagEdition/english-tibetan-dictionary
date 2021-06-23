@@ -13,7 +13,7 @@ import javax.inject.Provider
 
 @Database(entities = [Word::class],version = 1,exportSchema = false)
 abstract class WordDatabase : RoomDatabase() {
-    abstract fun wordDao(): WordDao;
+    abstract fun wordDao(): WordDao
     class Callback @Inject constructor (private val database:Provider<WordDatabase>, var context: Context,
                                         @ApplicationScope private val applicationScope:CoroutineScope):RoomDatabase.Callback(){
         override fun onCreate(db: SupportSQLiteDatabase) {

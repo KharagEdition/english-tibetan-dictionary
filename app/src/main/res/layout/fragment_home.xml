@@ -100,7 +100,7 @@
                                         android:gravity="center"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Dictionary"
+                                        android:text="@string/dictionary"
                                         android:textSize="14sp"
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
@@ -146,7 +146,7 @@
                                         android:gravity="center"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Favourite"
+                                        android:text="@string/favourite"
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
@@ -192,7 +192,7 @@
                                         android:gravity="center"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="About"
+                                        android:text="@string/about"
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
@@ -236,7 +236,7 @@
                                         android:gravity="center"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Setting"
+                                        android:text="@string/setting"
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
@@ -307,7 +307,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:icon="@drawable/ic_baseline_refresh_24"
-                            android:text="Generate New"/>
+                            android:text="@string/generate_new"/>
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>

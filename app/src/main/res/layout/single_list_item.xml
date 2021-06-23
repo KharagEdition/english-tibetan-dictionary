@@ -35,7 +35,7 @@
                     android:maxLines="1"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="Prayer"
+                    android:text="@string/prayer"
                     android:textSize="24sp" />
                 <ImageView
                     android:id="@+id/add_fav_icon_white"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="test"
+                android:text="@string/test"
                 android:textColor="@color/grayWhite"
                 android:textSize="18sp" />
         </LinearLayout>

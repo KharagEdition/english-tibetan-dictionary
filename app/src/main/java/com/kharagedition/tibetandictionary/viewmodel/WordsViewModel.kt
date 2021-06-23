@@ -26,7 +26,7 @@ class WordsViewModel @Inject constructor(private var wordDao: WordDao, var conte
         .cachedIn(viewModelScope)
             /*.map { pagingData ->
                 pagingData.filter {it->
-                     it.favourite==true;
+                     it.favourite==true
                 }
             }*/
     //GET FAV WORDS
@@ -39,7 +39,7 @@ class WordsViewModel @Inject constructor(private var wordDao: WordDao, var conte
 
     // filter list of data when query submitted
     fun filterData(query: String) {
-        liveQuery.postValue(query);
+        liveQuery.postValue(query)
     }
     //UPDATE WORDS
     fun updateCurrentWord(word: Word){

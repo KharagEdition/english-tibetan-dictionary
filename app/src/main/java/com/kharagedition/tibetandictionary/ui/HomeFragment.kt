@@ -30,25 +30,25 @@ import com.kharagedition.tibetandictionary.viewmodel.WordsViewModel
 
 
 class HomeFragment : Fragment() {
-    lateinit var topAnimation : Animation;
-    lateinit var wodLinearLayout: LinearLayout;
-    lateinit var settingCardView: MaterialCardView;
-    lateinit var aboutCardView: MaterialCardView;
-    private lateinit var favouriteCardView: MaterialCardView;
-    lateinit var dictionrayCardView: MaterialCardView;
-    private lateinit var settingIcon: ImageView;
-    private lateinit var aboutIcon: ImageView;
-    lateinit var favouriteIcon: ImageView;
-    lateinit var dictionaryIcon: ImageView;
-    private lateinit var rotation: Animation;
-    private lateinit var pulseAnimation: ObjectAnimator;
-    private lateinit var flipFromAnimation: ObjectAnimator;
-    private lateinit var flipToAnimation: ObjectAnimator;
-    lateinit var wodTibetan:MaterialTextView;
-    lateinit var wodEnglish:MaterialTextView;
-    lateinit var wodGenerateBtn:MaterialButton;
-    lateinit var exitAppIcon: ImageView;
-    private val wordsViewModel: WordsViewModel by activityViewModels();
+    lateinit var topAnimation : Animation
+    lateinit var wodLinearLayout: LinearLayout
+    lateinit var settingCardView: MaterialCardView
+    lateinit var aboutCardView: MaterialCardView
+    private lateinit var favouriteCardView: MaterialCardView
+    lateinit var dictionrayCardView: MaterialCardView
+    private lateinit var settingIcon: ImageView
+    private lateinit var aboutIcon: ImageView
+    lateinit var favouriteIcon: ImageView
+    lateinit var dictionaryIcon: ImageView
+    private lateinit var rotation: Animation
+    private lateinit var pulseAnimation: ObjectAnimator
+    private lateinit var flipFromAnimation: ObjectAnimator
+    private lateinit var flipToAnimation: ObjectAnimator
+    lateinit var wodTibetan:MaterialTextView
+    lateinit var wodEnglish:MaterialTextView
+    lateinit var wodGenerateBtn:MaterialButton
+    lateinit var exitAppIcon: ImageView
+    private val wordsViewModel: WordsViewModel by activityViewModels()
 
 
 
@@ -59,29 +59,29 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         var view =  inflater.inflate(R.layout.fragment_home, container, false)
 
-        initView(view);
-        initAnimation();
+        initView(view)
+        initAnimation()
         val layoutTransition: LayoutTransition = wodLinearLayout.layoutTransition
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
-        initListener();
-        generateWOD();
+        initListener()
+        generateWOD()
 
 
 
         topAnimation = AnimationUtils.loadAnimation(context, R.anim.layout_top_anim)
-        wodLinearLayout.startAnimation(topAnimation);
+        wodLinearLayout.startAnimation(topAnimation)
         //rotate anmation
-         rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate);
+         rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate)
 
-        return view;
+        return view
     }
 
     private fun generateWOD() {
-        wordsViewModel.generateWordOfTheDay();
+        wordsViewModel.generateWordOfTheDay()
         wordsViewModel.wordOfDay.observe(viewLifecycleOwner, {
-            wodEnglish.text = it.english;
+            wodEnglish.text = it.english
             wodTibetan.text = it.defination
-        });
+        })
     }
 
     private fun initAnimation() {
@@ -97,8 +97,8 @@ class HomeFragment : Fragment() {
         //favourite animation
          flipFromAnimation = ObjectAnimator.ofFloat(dictionaryIcon, "scaleX", 1f, 0f)
          flipToAnimation = ObjectAnimator.ofFloat(dictionaryIcon, "scaleX", 0f, 1f)
-        flipFromAnimation.duration = 150;
-        flipToAnimation.duration = 150;
+        flipFromAnimation.duration = 150
+        flipToAnimation.duration = 150
         flipFromAnimation.interpolator = DecelerateInterpolator()
          flipToAnimation.interpolator = AccelerateDecelerateInterpolator()
     }
@@ -114,22 +114,22 @@ class HomeFragment : Fragment() {
         var alertDialog = dialogBuilder.create()
         //alertDialog.window?.setWindowAnimations(R.style.DialogAnimation)
         mAdView.loadAd(adRequest)
-        alertDialog.window?.attributes?.windowAnimations = R.style.DialogAnimation;
+        alertDialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         alertDialog.show()
         dialogButton.setOnClickListener {
             alertDialog.dismiss()
-            requireActivity().finishAffinity();
+            requireActivity().finishAffinity()
         }
     }
     private fun initListener() {
 
         wodGenerateBtn.setOnClickListener {
-            generateWOD();
+            generateWOD()
         }
 
         exitAppIcon.setOnClickListener {
-            showAlertDialog(R.layout.dialog_negative_layout);
-        };
+            showAlertDialog(R.layout.dialog_negative_layout)
+        }
         // DICTIONARY CARD  ONCLICK LISTENER
         dictionrayCardView.setOnClickListener {
 
@@ -153,14 +153,14 @@ class HomeFragment : Fragment() {
         }
         // SETTING CARD ONCLICK LISTENER
         settingCardView.setOnClickListener {
-            settingIcon.startAnimation(rotation);
+            settingIcon.startAnimation(rotation)
             rotation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation?) {
                     Log.d("TAG", "onAnimationStart: ")
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-                    startActivity(Intent(activity,SettingActivity::class.java));
+                    startActivity(Intent(activity,SettingActivity::class.java))
                     //activity?.overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left,)
                 }
 
@@ -170,18 +170,18 @@ class HomeFragment : Fragment() {
             })
             //findNavController().navigate(R.id.listFragment)
 
-        };
+        }
         // ABOUT CARD ONCLICK LISTENER
         aboutCardView.setOnClickListener {
-            aboutIcon.startAnimation(rotation);
+            aboutIcon.startAnimation(rotation)
             rotation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation?) {
                     Log.d("TAG", "onAnimationStart: ")
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-                    val sheet = BottomSheetDialog();
-                    sheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet");
+                    val sheet = BottomSheetDialog()
+                    sheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
                 }
 
                 override fun onAnimationRepeat(animation: Animation?) {
@@ -190,10 +190,10 @@ class HomeFragment : Fragment() {
             })
             //findNavController().navigate(R.id.listFragment)
 
-        };
+        }
         // FAVOURITE CARD ONCLICK LISTENER
         favouriteCardView.setOnClickListener {
-            pulseAnimation.start();
+            pulseAnimation.start()
         }
         pulseAnimation.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animator: Animator) {}

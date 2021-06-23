@@ -24,12 +24,12 @@ import kotlinx.coroutines.launch
 
 
 class ListFragment : Fragment() {
-    lateinit var commonToolbar: MaterialToolbar;
+    lateinit var commonToolbar: MaterialToolbar
     lateinit var mAdView: AdView
-    lateinit var wordRecyclerView: RecyclerView;
-    private val wordsViewModel: WordsViewModel by activityViewModels();
+    lateinit var wordRecyclerView: RecyclerView
+    private val wordsViewModel: WordsViewModel by activityViewModels()
     private val pagingAdapter by lazy { WordsPagingDataAdapter(wordsViewModel) }
-     private var diplayFavWordsFavourite: Boolean? = false;
+     private var diplayFavWordsFavourite: Boolean? = false
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -38,26 +38,26 @@ class ListFragment : Fragment() {
         var view =  inflater.inflate(R.layout.fragment_list, container, false)
         diplayFavWordsFavourite = arguments?.getBoolean("favourite")
 
-        initViews(view);
-        setHasOptionsMenu(true);
+        initViews(view)
+        setHasOptionsMenu(true)
         var adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-        addListener();
-        return view;
+        addListener()
+        return view
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear();
+        menu.clear()
         if(diplayFavWordsFavourite==null || diplayFavWordsFavourite == false){
             inflater.inflate(R.menu.option_menu, menu)
-            val searchItem = menu.findItem(R.id.action_search);
-            val searchView = searchItem?.actionView as SearchView;
+            val searchItem = menu.findItem(R.id.action_search)
+            val searchView = searchItem?.actionView as SearchView
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     if(query!=null){
-                        wordsViewModel.filterData(query);
-                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                        wordsViewModel.filterData(query)
+                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, {
                             lifecycleScope.launch {
                                 wordsViewModel.queryWordsList.collectLatest {
                                     pagingAdapter.submitData(it)
@@ -77,8 +77,8 @@ class ListFragment : Fragment() {
 
                 override fun onQueryTextChange(query: String): Boolean {
                     if(query.length>2){
-                        wordsViewModel.filterData(query);
-                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, Observer {
+                        wordsViewModel.filterData(query)
+                        wordsViewModel.liveQuery.observe(viewLifecycleOwner, {
                             lifecycleScope.launch {
                                 wordsViewModel.queryWordsList.collectLatest {
                                     pagingAdapter.submitData(it)
@@ -107,13 +107,13 @@ class ListFragment : Fragment() {
     }
 
     private fun initViews(view: View) {
-        commonToolbar = view.findViewById(R.id.common_toolbar);
+        commonToolbar = view.findViewById(R.id.common_toolbar)
         (activity as AppCompatActivity?)!!.setSupportActionBar(commonToolbar)
         (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (activity as AppCompatActivity?)!!.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
+        (activity as AppCompatActivity?)!!.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
 
 
-        wordRecyclerView = view.findViewById(R.id.container);
+        wordRecyclerView = view.findViewById(R.id.container)
         mAdView = view.findViewById(R.id.bannerAd1)
 
     }
@@ -121,13 +121,13 @@ class ListFragment : Fragment() {
     private fun addListener() {
 
         wordRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context);
+            layoutManager = LinearLayoutManager(context)
             adapter = pagingAdapter
             edgeEffectFactory = BounceEdgeEffectFactory()
             setHasFixedSize(true)
         }
 
-        Log.d(MainActivity.TAG, "addListener: ");
+        Log.d(MainActivity.TAG, "addListener: ")
         if(diplayFavWordsFavourite!=null && diplayFavWordsFavourite==true){
             lifecycleScope.launch {
                 wordsViewModel.favWordsList.collectLatest {

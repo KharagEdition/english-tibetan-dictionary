@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        initViews();
+        initViews()
 
     }
     private fun initViews() {
