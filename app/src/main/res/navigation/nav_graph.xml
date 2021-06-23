@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.kharagedition.englishtibetandictionary.ui.ListFragment"
+        android:name="com.kharagedition.tibetandictionary.ui.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.kharagedition.englishtibetandictionary.ui.HomeFragment"
+        android:name="com.kharagedition.tibetandictionary.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action

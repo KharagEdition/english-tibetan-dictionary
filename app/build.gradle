@@ -13,7 +13,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.kharagedition.englishtibetandictionary"
+        applicationId "com.kharagedition.tibetandictionary"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
