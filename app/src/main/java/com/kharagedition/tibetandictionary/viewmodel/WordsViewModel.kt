@@ -17,7 +17,7 @@ import javax.inject.Inject
  * Created by kharag on 17,June,2021
  */
 @HiltViewModel
-class WordsViewModel @Inject constructor(private var wordDao: WordDao, var context: Context) : ViewModel() {
+class WordsViewModel @Inject constructor(private var wordDao: WordDao,  context: Context) : ViewModel() {
     var liveQuery: MutableLiveData<String> =MutableLiveData<String>()
     var wordOfDay : LiveData<Word> =MutableLiveData()
     //GET ALL WORDS
@@ -30,9 +30,9 @@ class WordsViewModel @Inject constructor(private var wordDao: WordDao, var conte
                 }
             }*/
     //GET FAV WORDS
-            val favWordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getFavWordsFromDictionary(true)})
-                    .flow
-                    .cachedIn(viewModelScope)
+        val favWordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getFavWordsFromDictionary(true)})
+                .flow
+                .cachedIn(viewModelScope)
     //GET QUERY WORDS
     val queryWordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getQueryWordsFromDictionary(liveQuery.value)})
             .flow

@@ -1,11 +1,14 @@
 package com.kharagedition.tibetandictionary.adapter
 
+import android.content.SharedPreferences
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
@@ -41,9 +44,8 @@ class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdap
         var defination: MaterialTextView = itemView.findViewById(R.id.defination)
         var addToFavIcon: ImageView = itemView.findViewById(R.id.add_fav_icon_white)
         fun bind(word: Word) {
-            wynie.text =word.wylie
-            english.text = word.english
-            defination.text = word.defination
+            setPreferenece(wynie,english,defination,word,itemView)
+
             if(word.favourite!=null && word.favourite==true){
                 addToFavIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context,R.drawable.ic_baseline_favorite_24_red))
             }else{
@@ -61,6 +63,19 @@ class WordsPagingDataAdapter(var wordViewModel: WordsViewModel) : PagingDataAdap
                 wordViewModel.updateCurrentWord(word)
             }
         }
+    }
+
+    private fun setPreferenece(wynie: MaterialTextView, english: MaterialTextView, defination: MaterialTextView, word: Word, itemView: View) {
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(itemView.context)
+        val fontSize = prefs.getInt("font_size", 0)
+        val fontSpace = prefs.getInt("font_space", 0)
+        english.textSize = fontSize.toFloat() + 20
+        defination.textSize = fontSize.toFloat() + 20
+        wynie.textSize = fontSize.toFloat() + 18
+        defination.setLineSpacing(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1.0f,  itemView.context.resources.displayMetrics), (fontSpace.toFloat()*0.1f)+1)
+        wynie.text =word.wylie
+        english.text = word.english
+        defination.text = word.defination
     }
 
 }

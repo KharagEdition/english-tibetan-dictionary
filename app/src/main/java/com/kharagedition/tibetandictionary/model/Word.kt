@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
  */
 @Entity(tableName = "DICTIONARY")
 @Parcelize
-class Word(@PrimaryKey(autoGenerate = true)
+data class Word(@PrimaryKey(autoGenerate = true)
            var id: Int? = null,
            var wylie:String? = null,
            var english:String? = null,

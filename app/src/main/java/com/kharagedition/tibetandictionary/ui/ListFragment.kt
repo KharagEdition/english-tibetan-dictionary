@@ -35,12 +35,12 @@ class ListFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var view =  inflater.inflate(R.layout.fragment_list, container, false)
+        val view =  inflater.inflate(R.layout.fragment_list, container, false)
         diplayFavWordsFavourite = arguments?.getBoolean("favourite")
 
         initViews(view)
         setHasOptionsMenu(true)
-        var adRequest = AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
         addListener()
         return view
@@ -107,13 +107,13 @@ class ListFragment : Fragment() {
     }
 
     private fun initViews(view: View) {
-        commonToolbar = view.findViewById(R.id.common_toolbar)
+        commonToolbar = view.findViewById(R.id.list_toolbar)
         (activity as AppCompatActivity?)!!.setSupportActionBar(commonToolbar)
         (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity?)!!.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24)
 
 
-        wordRecyclerView = view.findViewById(R.id.container)
+        wordRecyclerView = view.findViewById(R.id.list_container)
         mAdView = view.findViewById(R.id.bannerAd1)
 
     }
@@ -123,23 +123,22 @@ class ListFragment : Fragment() {
         wordRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = pagingAdapter
-            edgeEffectFactory = BounceEdgeEffectFactory()
+            //edgeEffectFactory = BounceEdgeEffectFactory()
             setHasFixedSize(true)
         }
 
         Log.d(MainActivity.TAG, "addListener: ")
-        if(diplayFavWordsFavourite!=null && diplayFavWordsFavourite==true){
-            lifecycleScope.launch {
+        lifecycleScope.launch {
+            if(diplayFavWordsFavourite!=null && diplayFavWordsFavourite==true){
                 wordsViewModel.favWordsList.collectLatest {
                     pagingAdapter.submitData(it)
                 }
-            }
-        }else{
-            lifecycleScope.launch {
+            }else{
                 wordsViewModel.wordsList.collectLatest {
                     pagingAdapter.submitData(it)
                 }
             }
+
         }
 
 

@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.EnglishTibetanDictionary" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/brown_500</item>
-        <item name="colorPrimaryVariant">@color/brown_700</item>
+        <item name="colorPrimary">@color/brown_700</item>
+        <item name="colorPrimaryVariant">@color/brown_500</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorAccent">@color/brown_700</item>
 
@@ -20,4 +20,5 @@
     <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
     <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
     </style>
+
 </resources>

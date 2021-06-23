@@ -29,14 +29,14 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/english"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:text="@string/prayer"
-                    android:textSize="24sp" />
+                    android:textSize="20sp" />
                 <ImageView
                     android:id="@+id/add_fav_icon_white"
                     android:layout_width="wrap_content"
@@ -48,8 +48,7 @@
                 android:id="@+id/defination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.5"
-                android:text="རྒྱུན་ཆགས་གསུམ་པ།"
+                android:text="རྒྱུན་ཆགས་གསུམ་པ།\nརྒྱུན་ཆགས་གསུམ་པ།"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

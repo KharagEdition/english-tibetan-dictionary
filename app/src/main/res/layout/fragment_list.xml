@@ -9,22 +9,26 @@
     tools:context=".ui.ListFragment">
  <com.google.android.material.appbar.MaterialToolbar
      app:layout_constraintTop_toTopOf="parent"
-     android:id="@+id/common_toolbar"
+     android:id="@+id/list_toolbar"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:background="?attr/colorPrimary"
+     android:background="@color/brown_700"
      android:minHeight="?attr/actionBarSize"
      android:theme="@style/ThemeOverlay.MaterialComponents.Dark"
      app:title="@string/app_name"
-     app:titleTextColor="@android:color/white" />
+     app:titleTextColor="@android:color/white"
+     android:elevation="3dp"/>
+
  <androidx.recyclerview.widget.RecyclerView
-     android:overScrollMode="always"
-     android:layoutAnimation="@anim/layout_animation"
-     android:id="@+id/container"
+     android:id="@+id/list_container"
      android:layout_width="match_parent"
      android:layout_height="0dp"
+     android:layoutAnimation="@anim/layout_animation"
+     android:overScrollMode="always"
      ads:layout_constraintBottom_toTopOf="@+id/bannerAd1"
-     ads:layout_constraintTop_toBottomOf="@+id/common_toolbar"/>
+     ads:layout_constraintTop_toBottomOf="@+id/list_toolbar"
+     ads:layout_constraintVertical_bias="0.0"
+     tools:layout_editor_absoluteX="0dp" />
 
  <com.google.android.gms.ads.AdView
      android:id="@+id/bannerAd1"

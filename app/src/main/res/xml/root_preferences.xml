@@ -14,9 +14,15 @@
         <SeekBarPreference
             app:icon="@drawable/ic_baseline_font_download_24"
             android:max="5"
-            app:key="prayer_font"
-            app:title="Prayer Font Size"
+            app:key="font_size"
+            app:title="Font Size"
             app:defaultValue="0"/>
+        <SeekBarPreference
+            app:icon="@drawable/ic_baseline_format_line_spacing_24"
+            android:max="10"
+            app:key="font_space"
+            app:title="Font Space"
+            app:defaultValue="3"/>
 
 
 
