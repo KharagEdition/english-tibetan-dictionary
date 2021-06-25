@@ -14,8 +14,8 @@ class CommonUtils {
    companion object {
        var INSTAGRAM_URL = "https://www.instagram.com/kontashi35/"
        var FACEBOOK_URL = "https://www.facebook.com/techtibet"
-       var GITHUB_URL = "https://github.com/CodingWithTashi/Tibetan-Prayer-App"
-       var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer"
+       var GITHUB_URL = "https://github.com/CodingWithTashi/EnglishTibetanDictionary"
+       var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.kharagedition.tibetandictionary"
        var PLAY_STORE_DAILY_PRAYER_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer"
        var PLAY_STORE_CALENDAR_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender"
 

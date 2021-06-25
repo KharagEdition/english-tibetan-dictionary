@@ -3,6 +3,7 @@ package com.kharagedition.tibetandictionary.ui
 import android.animation.*
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.material.button.MaterialButton
@@ -48,6 +50,7 @@ class HomeFragment : Fragment() {
     lateinit var wodEnglish:MaterialTextView
     lateinit var wodGenerateBtn:MaterialButton
     lateinit var exitAppIcon: ImageView
+    lateinit var ownerDictionaryName: MaterialTextView
     private val wordsViewModel: WordsViewModel by activityViewModels()
 
 
@@ -60,6 +63,7 @@ class HomeFragment : Fragment() {
         var view =  inflater.inflate(R.layout.fragment_home, container, false)
 
         initView(view)
+        setDefaultValue()
         initAnimation()
         val layoutTransition: LayoutTransition = wodLinearLayout.layoutTransition
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
@@ -74,6 +78,14 @@ class HomeFragment : Fragment() {
          rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate)
 
         return view
+    }
+
+    private fun setDefaultValue() {
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+        val username = prefs.getString("signature", "");
+        username.apply {
+            ownerDictionaryName.text = " ${username} དབྱིན་བོད་ཚིག་མཛོད་"
+        }
     }
 
     private fun generateWOD() {
@@ -221,6 +233,7 @@ class HomeFragment : Fragment() {
         wodTibetan = view.findViewById(R.id.wod_tb)
         wodGenerateBtn = view.findViewById(R.id.wod_generate_btn)
         wodLinearLayout = view.findViewById(R.id.wodLinearLayout)
+        ownerDictionaryName = view.findViewById(R.id.owner_dictionary)
 
 
 

@@ -29,6 +29,26 @@
      ads:layout_constraintTop_toBottomOf="@+id/list_toolbar"
      ads:layout_constraintVertical_bias="0.0"
      tools:layout_editor_absoluteX="0dp" />
+ <ProgressBar
+     android:visibility="gone"
+     android:id="@+id/loading_words"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     ads:layout_constraintTop_toTopOf="parent"
+     ads:layout_constraintBottom_toBottomOf="parent"
+     ads:layout_constraintLeft_toLeftOf="parent"
+     ads:layout_constraintRight_toRightOf="parent"/>
+ <com.google.android.material.textview.MaterialTextView
+     android:visibility="gone"
+     android:text="No data found"
+     android:textSize="20sp"
+     android:id="@+id/empty_msg"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     ads:layout_constraintTop_toTopOf="parent"
+     ads:layout_constraintBottom_toBottomOf="parent"
+     ads:layout_constraintLeft_toLeftOf="parent"
+     ads:layout_constraintRight_toRightOf="parent"/>
 
  <com.google.android.gms.ads.AdView
      android:id="@+id/bannerAd1"

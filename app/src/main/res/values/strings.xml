@@ -38,4 +38,5 @@
     <string name="test">test</string>
     <string name="search">Search</string>
     <string name="home_desc">home desc</string>
+    <string name="support_developer">Support Developer/Remove ads</string>
 </resources>
