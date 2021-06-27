@@ -88,7 +88,7 @@ class ListFragment : Fragment() {
 
     private fun loadInterstitialAds(adRequest: AdRequest) {
         activity.apply {
-            InterstitialAd.load(requireContext(),Constant.TEST_INTERSTITIAL_AD_ID, adRequest, object : InterstitialAdLoadCallback() {
+            InterstitialAd.load(requireContext(),Constant.PROD_INTERSTITIAL_AD_ID, adRequest, object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     Log.d("TAG", adError.message)
                     mInterstitialAd = null

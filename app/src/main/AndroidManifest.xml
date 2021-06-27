@@ -18,7 +18,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-6227175612272228~5403760257" />
 
         <activity android:name="com.kharagedition.tibetandictionary.ui.SplashScreenActivity">
             <intent-filter>
