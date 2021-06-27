@@ -1,12 +1,14 @@
 package com.kharagedition.tibetandictionary
 
 import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import androidx.lifecycle.ViewModelProvider
 import com.kharagedition.tibetandictionary.provider.MySuggestionProvider
+import com.kharagedition.tibetandictionary.util.Constant
 import com.kharagedition.tibetandictionary.viewmodel.WordsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

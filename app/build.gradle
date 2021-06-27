@@ -16,8 +16,8 @@ android {
         applicationId "com.kharagedition.tibetandictionary"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -93,6 +93,8 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-messaging-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-firestore:23.0.1'
+
     //Paging
     implementation("androidx.paging:paging-runtime-ktx:$paging_version")
     //google ads

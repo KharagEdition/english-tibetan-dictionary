@@ -39,4 +39,6 @@
     <string name="search">Search</string>
     <string name="home_desc">home desc</string>
     <string name="support_developer">Support Developer/Remove ads</string>
+    <string name="send_message_feedback">Send message/feedback</string>
+    <string name="send_feature_request">Send Feature Request</string>
 </resources>

@@ -27,19 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kharagedition.tibetandictionary.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
+        <activity android:name="com.kharagedition.tibetandictionary.MainActivity"/>
 
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
-
-        <provider
-            android:name="com.kharagedition.tibetandictionary.provider.MySuggestionProvider"
-            android:authorities="com.kharagedition.tibetandictionary.provider.MySuggestionProvider" />
     </application>
 
 </manifest>

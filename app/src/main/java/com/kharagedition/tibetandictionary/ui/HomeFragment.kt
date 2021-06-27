@@ -2,12 +2,14 @@ package com.kharagedition.tibetandictionary.ui
 
 import android.animation.*
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
@@ -28,6 +30,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 import com.kharagedition.tibetandictionary.R
 import com.kharagedition.tibetandictionary.util.BottomSheetDialog
+import com.kharagedition.tibetandictionary.util.Constant
 import com.kharagedition.tibetandictionary.viewmodel.WordsViewModel
 
 
@@ -52,6 +55,7 @@ class HomeFragment : Fragment() {
     lateinit var exitAppIcon: ImageView
     lateinit var ownerDictionaryName: MaterialTextView
     private val wordsViewModel: WordsViewModel by activityViewModels()
+    var count: Int = 0;
 
 
 
@@ -121,16 +125,36 @@ class HomeFragment : Fragment() {
         var dialogBuilder = AlertDialog.Builder(context)
         val layoutView = layoutInflater.inflate(layout, null)
         val dialogButton: MaterialButton = layoutView.findViewById(R.id.btnDialog)
+        val sadImage: ImageView = layoutView.findViewById(R.id.sad_image)
         var mAdView:AdView = layoutView.findViewById(R.id.bannerAd2)
         dialogBuilder.setView(layoutView)
         var alertDialog = dialogBuilder.create()
         //alertDialog.window?.setWindowAnimations(R.style.DialogAnimation)
-        mAdView.loadAd(adRequest)
+        loadAdsIfNotPurchased(mAdView,adRequest)
         alertDialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         alertDialog.show()
         dialogButton.setOnClickListener {
             alertDialog.dismiss()
             requireActivity().finishAffinity()
+        }
+        sadImage.setOnClickListener{
+            count++
+            if(count==5){
+                val prefs = activity?.getSharedPreferences(
+                        "com.kharagedition.dictionary", Context.MODE_PRIVATE)?.edit()
+                prefs?.putBoolean(Constant.PURCHASED,true)
+                prefs?.apply();
+            }
+        }
+    }
+    private fun loadAdsIfNotPurchased(mAdView:AdView, adRequest: AdRequest) {
+        val prefs: SharedPreferences? = activity?.getSharedPreferences("com.kharagedition.dictionary",Context.MODE_PRIVATE)
+        val isPurchased = prefs?.getBoolean(Constant.PURCHASED, false)
+
+        if(isPurchased==null || !isPurchased){
+            mAdView.loadAd(adRequest)
+        }else{
+            mAdView.visibility=GONE
         }
     }
     private fun initListener() {
