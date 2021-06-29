@@ -88,6 +88,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <HorizontalScrollView
+                    android:scrollbars="none"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -98,14 +99,12 @@
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp">
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/dictionary_card_view"
-                                android:layout_width="85dp"
-                                android:layout_height="85dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginTop="20dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
@@ -133,8 +132,8 @@
 
                             <ImageView
                                 android:id="@+id/dictionary_icon"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_baseline_menu_book_24"
@@ -143,14 +142,12 @@
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp">
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/favourite_card_view"
-                                android:layout_width="85dp"
-                                android:layout_height="85dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginTop="20dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
@@ -179,8 +176,8 @@
                             <ImageView
                                 android:id="@+id/fav_icon"
 
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
@@ -189,14 +186,56 @@
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp">
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/ml_card_view"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="20dp"
+                                app:cardBackgroundColor="@color/brown_500"
+                                card_view:cardCornerRadius="4dp"
+                                card_view:cardElevation="5dp"
+                                card_view:cardPreventCornerOverlap="false"
+                                card_view:cardUseCompatPadding="true">
+
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_marginTop="10dp"
+                                        android:gravity="center"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="ML Search"
+                                        android:scrollHorizontally="true"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:textSize="14sp"
+                                        android:textColor="@color/white"/>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <ImageView
+                                android:id="@+id/machine_icon"
+
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerInParent="true"
+                                android:elevation="10dp"
+                                android:src="@drawable/ic_baseline_camera_alt_24" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/about_card_view"
-                                android:layout_width="85dp"
-                                android:layout_height="85dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginTop="20dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
@@ -224,8 +263,8 @@
 
                             <ImageView
                                 android:id="@+id/icon_about"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
@@ -233,14 +272,12 @@
                         </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp">
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/setting_card_view"
-                                android:layout_width="85dp"
-                                android:layout_height="85dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginTop="20dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
@@ -268,8 +305,8 @@
 
                             <ImageView
                                 android:id="@+id/icon_setting"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"

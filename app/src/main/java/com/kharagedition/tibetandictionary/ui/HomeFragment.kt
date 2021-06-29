@@ -41,11 +41,14 @@ class HomeFragment : Fragment() {
     lateinit var aboutCardView: MaterialCardView
     private lateinit var favouriteCardView: MaterialCardView
     lateinit var dictionrayCardView: MaterialCardView
+    lateinit var mlCardView: MaterialCardView
     private lateinit var settingIcon: ImageView
     private lateinit var aboutIcon: ImageView
     lateinit var favouriteIcon: ImageView
     lateinit var dictionaryIcon: ImageView
+    lateinit var mlIcon: ImageView
     private lateinit var rotation: Animation
+    private lateinit var shake: Animation
     private lateinit var pulseAnimation: ObjectAnimator
     private lateinit var flipFromAnimation: ObjectAnimator
     private lateinit var flipToAnimation: ObjectAnimator
@@ -80,6 +83,8 @@ class HomeFragment : Fragment() {
         wodLinearLayout.startAnimation(topAnimation)
         //rotate anmation
          rotation = AnimationUtils.loadAnimation(context, R.anim.button_rotate)
+        //shake animation
+        shake = AnimationUtils.loadAnimation(context, R.anim.shake_anim)
 
         return view
     }
@@ -227,6 +232,24 @@ class HomeFragment : Fragment() {
             //findNavController().navigate(R.id.listFragment)
 
         }
+
+        mlCardView.setOnClickListener {
+            mlIcon.startAnimation(shake)
+            shake.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation?) {
+                    Log.d("TAG", "onAnimationStart: ")
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    findNavController().navigate(R.id.MLSearchFragment)
+                }
+
+                override fun onAnimationRepeat(animation: Animation?) {
+                    Log.d("TAG", "onAnimationRepeat: ")
+                }
+            })
+        }
+
         // FAVOURITE CARD ONCLICK LISTENER
         favouriteCardView.setOnClickListener {
             pulseAnimation.start()
@@ -258,6 +281,9 @@ class HomeFragment : Fragment() {
         wodGenerateBtn = view.findViewById(R.id.wod_generate_btn)
         wodLinearLayout = view.findViewById(R.id.wodLinearLayout)
         ownerDictionaryName = view.findViewById(R.id.owner_dictionary)
+        mlIcon = view.findViewById(R.id.machine_icon)
+        mlCardView = view.findViewById(R.id.ml_card_view)
+
 
 
 

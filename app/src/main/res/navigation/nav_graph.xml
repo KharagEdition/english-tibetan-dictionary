@@ -18,5 +18,13 @@
         <action
             android:id="@+id/action_homeFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_MLSearchFragment"
+            app:destination="@id/MLSearchFragment" />
     </fragment>
+    <fragment
+            android:id="@+id/MLSearchFragment"
+        android:name="com.kharagedition.tibetandictionary.ui.MLSearchFragment"
+        android:label="fragment_m_l_search"
+        tools:layout="@layout/fragment_m_l_search" />
 </navigation>
