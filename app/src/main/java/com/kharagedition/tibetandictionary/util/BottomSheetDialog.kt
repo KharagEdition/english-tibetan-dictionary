@@ -63,10 +63,10 @@ class BottomSheetDialog : BottomSheetDialogFragment(),View.OnClickListener {
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
-                    var shareMessage = "\nCheck out this prayer application.\n\n"
+                    var shareMessage = "\nCheck out this Dictionary Application.\n\n"
                     shareMessage =
                         """
-                        ${shareMessage}https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer
+                        ${shareMessage}https://play.google.com/store/apps/details?id=com.kharagedition.tibetandictionary
                         """.trimIndent()
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
                     startActivity(Intent.createChooser(shareIntent, "choose one"))
