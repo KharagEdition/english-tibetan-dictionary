@@ -103,9 +103,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/dictionary_card_view"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="15dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
                                 card_view:cardElevation="5dp"
@@ -121,7 +121,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/dictionary"
-                                        android:textSize="14sp"
+                                        android:textSize="13sp"
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
@@ -132,8 +132,8 @@
 
                             <ImageView
                                 android:id="@+id/dictionary_icon"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:src="@drawable/ic_baseline_menu_book_24"
@@ -146,9 +146,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/favourite_card_view"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="15dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
                                 card_view:cardElevation="5dp"
@@ -168,7 +168,7 @@
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:textSize="14sp"
+                                        android:textSize="13sp"
                                         android:textColor="@color/white"/>
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
@@ -176,8 +176,8 @@
                             <ImageView
                                 android:id="@+id/fav_icon"
 
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
@@ -190,9 +190,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/ml_card_view"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="15dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
                                 card_view:cardElevation="5dp"
@@ -212,7 +212,7 @@
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:textSize="14sp"
+                                        android:textSize="13sp"
                                         android:textColor="@color/white"/>
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
@@ -220,8 +220,8 @@
                             <ImageView
                                 android:id="@+id/machine_icon"
 
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
@@ -234,9 +234,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/about_card_view"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="15dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
                                 card_view:cardElevation="5dp"
@@ -256,15 +256,15 @@
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:textSize="14sp"
+                                        android:textSize="13sp"
                                         android:textColor="@color/white"/>
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
 
                             <ImageView
                                 android:id="@+id/icon_about"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
@@ -276,9 +276,9 @@
 
                             <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/setting_card_view"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_marginTop="15dp"
                                 app:cardBackgroundColor="@color/brown_500"
                                 card_view:cardCornerRadius="4dp"
                                 card_view:cardElevation="5dp"
@@ -298,15 +298,15 @@
                                         android:scrollHorizontally="true"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:textSize="14sp"
+                                        android:textSize="13sp"
                                         android:textColor="@color/white"/>
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
 
                             <ImageView
                                 android:id="@+id/icon_setting"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"

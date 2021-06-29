@@ -149,7 +149,9 @@ class HomeFragment : Fragment() {
                         "com.kharagedition.dictionary", Context.MODE_PRIVATE)?.edit()
                 prefs?.putBoolean(Constant.PURCHASED,true)
                 prefs?.apply();
+                Log.e("TAG", "showAlertDialog: DISABLED ADS", )
             }
+
         }
     }
     private fun loadAdsIfNotPurchased(mAdView:AdView, adRequest: AdRequest) {

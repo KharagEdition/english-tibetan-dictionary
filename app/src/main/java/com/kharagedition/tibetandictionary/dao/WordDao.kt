@@ -20,7 +20,7 @@ interface WordDao {
     fun getQueryWordsFromDictionary(query: String?): PagingSource<Int, Word>
 
 
-    @Query("SELECT * FROM DICTIONARY WHERE english like :query ")
+    @Query("SELECT * FROM DICTIONARY WHERE english like UPPER(:query) || '%' ")
      fun getWordsFromDictionaryByQuery(query: String): Flow<List<Word>>
 
 

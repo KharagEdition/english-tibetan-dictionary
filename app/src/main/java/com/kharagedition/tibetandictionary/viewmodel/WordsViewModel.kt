@@ -20,6 +20,7 @@ import javax.inject.Inject
 class WordsViewModel @Inject constructor(private var wordDao: WordDao,  context: Context) : ViewModel() {
     var liveQuery: MutableLiveData<String> =MutableLiveData<String>()
     var wordOfDay : LiveData<Word> =MutableLiveData()
+    var mlQueryWordList : LiveData<List<Word>> =MutableLiveData()
     //GET ALL WORDS
     val wordsList = Pager(PagingConfig(pageSize = 10,enablePlaceholders = false),pagingSourceFactory = {wordDao.getAllWordsFromDictionary()})
         .flow
@@ -53,6 +54,11 @@ class WordsViewModel @Inject constructor(private var wordDao: WordDao,  context:
         wordOfDay =wordDao.getRandomWord().asLiveData()
     }
 
-    val words = wordDao.getWords().asLiveData()
+
+    fun getMeaningForMLSearchWord(query:String){
+        Log.e("TAG", "generateWordOfTheDay: ", )
+        mlQueryWordList =wordDao.getWordsFromDictionaryByQuery(query).asLiveData()
+    }
+
 
 }
