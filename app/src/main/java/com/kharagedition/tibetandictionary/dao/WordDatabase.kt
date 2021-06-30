@@ -11,7 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 import javax.inject.Provider
 
-@Database(entities = [Word::class],version = 2,exportSchema = false)
+@Database(entities = [Word::class],version = 1,exportSchema = false)
 abstract class WordDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
     class Callback @Inject constructor (private val database:Provider<WordDatabase>, var context: Context,

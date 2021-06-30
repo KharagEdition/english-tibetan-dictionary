@@ -1,25 +1,30 @@
 package com.kharagedition.tibetandictionary.ui
 
+import android.Manifest
+import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.text.InputType
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -42,7 +47,7 @@ class MLSearchFragment : Fragment() {
     }
     lateinit var backBtn:ImageView;
     lateinit var selectImageView:ImageView;
-    lateinit var uploadIconImageVew:ImageView;
+    lateinit var uploadIconImageVew:LinearLayout;
     lateinit var openCameraButton:MaterialButton;
     lateinit var searchWordBtn:MaterialButton;
     lateinit var englishWordText:MaterialTextView;
@@ -55,8 +60,8 @@ class MLSearchFragment : Fragment() {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_m_l_search, container, false)
@@ -64,12 +69,15 @@ class MLSearchFragment : Fragment() {
         initVew(view);
         initListener()
         var adRequest = AdRequest.Builder().build()
-        loadAdsIfNotPurchased(mAdView,adRequest)
+        loadAdsIfNotPurchased(mAdView, adRequest)
         return  view;
     }
 
     private fun loadAdsIfNotPurchased(mAdView: AdView, adRequest: AdRequest) {
-        val prefs: SharedPreferences? = activity?.getSharedPreferences("com.kharagedition.dictionary", Context.MODE_PRIVATE)
+        val prefs: SharedPreferences? = activity?.getSharedPreferences(
+            "com.kharagedition.dictionary",
+            Context.MODE_PRIVATE
+        )
         val isPurchased = prefs?.getBoolean(Constant.PURCHASED, false)
 
         if(isPurchased==null || !isPurchased){
@@ -84,8 +92,23 @@ class MLSearchFragment : Fragment() {
             this.findNavController().popBackStack()
         }
         openCameraButton.setOnClickListener {
+            val ctx = context;
+            if(ctx!=null){
+                if (ContextCompat.checkSelfPermission(
+                        ctx,
+                        Manifest.permission.CAMERA
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        (context as Activity?)!!, arrayOf(Manifest.permission.CAMERA),
+                        12
+                    )
+                }else{
+                    dispatchTakePictureIntent();
+                }
+            }
 
-            dispatchTakePictureIntent();
+
         }
         uploadIconImageVew.setOnClickListener{
             val photoPickerIntent = Intent(Intent.ACTION_PICK)
@@ -121,9 +144,9 @@ class MLSearchFragment : Fragment() {
                 val ctx = context;
                 if(ctx!=null){
                     val builder: AlertDialog.Builder = AlertDialog.Builder(ctx)
-                    builder.setTitle("Select and update the word you are looking for")
+                    builder.setTitle("Too many word found, Select one and edit the word")
                     builder.setItems(
-                            items
+                        items
                     ) { dialog, item -> // Do something with the selection
                         //searchForWordMeaning(items[item])
                         dialog.dismiss()
@@ -148,12 +171,14 @@ class MLSearchFragment : Fragment() {
     private fun showDialogWithInput(word: String) {
         context.apply {
             val builder = context?.let { AlertDialog.Builder(it) }
-            builder?.setTitle("Update Word")
+            builder?.setTitle("Edit Word")
 
             val input = EditText(this)
             builder?.setView(input)
             input.setText(word);
-            builder?.setPositiveButton("Confirm") { dialog, _ -> searchForWordMeaning(input.text.trim().toString());dialog.dismiss() }
+            builder?.setPositiveButton("Confirm") { dialog, _ -> searchForWordMeaning(
+                input.text.trim().toString()
+            );dialog.dismiss() }
             builder?.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
 
             builder?.show()

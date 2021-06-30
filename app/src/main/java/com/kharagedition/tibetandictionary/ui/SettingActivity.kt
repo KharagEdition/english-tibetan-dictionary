@@ -145,6 +145,7 @@ class SettingActivity : AppCompatActivity(),PurchasesUpdatedListener {
             billingResult: BillingResult,
             purchases: MutableList<Purchase>?
     ) {
+        Log.e("TAG", "loadAllSKUs:LOGGGG "+billingResult.responseCode)
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
             for (purchase in purchases) {
                 acknowledgePurchase(purchase.purchaseToken)

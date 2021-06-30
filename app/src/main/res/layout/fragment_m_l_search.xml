@@ -71,8 +71,9 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/ic_undraw_reading_time_gvg0"/>
+                            android:src="@drawable/ic_upload_undraw"/>
                         <LinearLayout
+                            android:id="@+id/upload_icon"
                             android:orientation="vertical"
                             android:gravity="center"
                             app:layout_constraintTop_toTopOf="parent"
@@ -81,21 +82,15 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-                            <ImageView
-                                android:id="@+id/upload_icon"
-                                android:scaleType="fitXY"
-                                android:layout_width="120dp"
-                                android:layout_height="120dp"
-                                android:src="@drawable/ic_baseline_file_upload_24"/>
                             <com.google.android.material.textview.MaterialTextView
                                 android:alpha="0.7"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="150dp"
                                 android:textColor="@color/white"
                                 android:id="@+id/select_ig_text"
                                 android:layout_gravity="center"
                                 android:gravity="start"
                                 android:lineSpacingExtra="4dp"
-                                android:text="Select an Image"
+                                android:text="Click here to select an image"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="22sp"/>
@@ -111,12 +106,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <com.google.android.material.button.MaterialButton
+                        android:paddingVertical="10dp"
                         android:id="@+id/open_camera"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Open Camera"
                         app:icon="@drawable/ic_baseline_camera_alt_24"/>
                     <com.google.android.material.button.MaterialButton
+                        android:paddingVertical="10dp"
                         android:layout_marginTop="10dp"
                         android:enabled="false"
                         android:id="@+id/translate"
@@ -130,8 +127,8 @@
                     android:padding="10dp"
                     android:background="@drawable/ml_search_bg"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
