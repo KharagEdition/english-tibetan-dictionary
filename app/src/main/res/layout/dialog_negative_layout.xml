@@ -28,7 +28,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/bannerAd2"
-    android:src="@drawable/ic_baseline_mood_bad_24" />
+    app:srcCompat="@drawable/ic_baseline_mood_bad_24" />
 
 <TextView
     android:id="@+id/textView"

@@ -24,7 +24,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_home_24"
+            app:srcCompat="@drawable/ic_baseline_home_24"
             android:layout_marginLeft="10dp" />
     </LinearLayout>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -136,7 +136,7 @@
                                 android:layout_height="40dp"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/ic_baseline_menu_book_24"
+                                app:srcCompat="@drawable/ic_baseline_menu_book_24"
                                 android:elevation="10dp" />
                         </RelativeLayout>
 
@@ -181,7 +181,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
-                                android:src="@drawable/ic_baseline_favorite_24" />
+                                app:srcCompat="@drawable/ic_baseline_favorite_24" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -225,7 +225,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
-                                android:src="@drawable/ic_baseline_camera_alt_24" />
+                                app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -268,7 +268,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
-                                android:src="@drawable/ic_baseline_info_24" />
+                                app:srcCompat="@drawable/ic_baseline_info_24" />
                         </RelativeLayout>
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -310,7 +310,7 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
                                 android:elevation="10dp"
-                                android:src="@drawable/ic_baseline_settings_24" />
+                                app:srcCompat="@drawable/ic_baseline_settings_24" />
                         </RelativeLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -340,7 +340,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_undraw_reading_time_gvg0"/>
+                            app:srcCompat="@drawable/ic_undraw_reading_time_gvg0"/>
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/wod_en"
                             android:layout_marginTop="10dp"
@@ -393,7 +393,7 @@
             android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_exit_to_app_24"
+            app:srcCompat="@drawable/ic_baseline_exit_to_app_24"
             android:layout_marginRight="10dp" />
     </LinearLayout>
 
