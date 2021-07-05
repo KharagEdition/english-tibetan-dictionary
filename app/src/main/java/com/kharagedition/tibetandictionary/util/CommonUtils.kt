@@ -19,7 +19,6 @@ class CommonUtils {
        var PLAY_STORE_DAILY_PRAYER_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.dailyprayer"
        var PLAY_STORE_CALENDAR_URL = "https://play.google.com/store/apps/details?id=com.codingwithtashi.tibetan_calender"
 
-       var PAYPAL_URL = "https://www.paypal.com/paypalme/kontashi35"
 
        fun displaySnackBar(view: View, msg:String){
            Snackbar.make(view,msg,Snackbar.LENGTH_SHORT).show()
