@@ -22,7 +22,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6227175612272228~5403760257" />
+            android:value="ca-app-pub-8284901143739274~3229413663" />
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />

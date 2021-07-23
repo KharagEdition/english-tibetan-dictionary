@@ -167,5 +167,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-6227175612272228/6289799650"/>
+        app:adUnitId="ca-app-pub-8284901143739274/3571661617"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ class Constant {
          const val DATABASE_DIR = "dictionarydb.sqlite.db"
         const val PURCHASED: String = "purchased"
         const val TEST_INTERSTITIAL_AD_ID: String = "ca-app-pub-3940256099942544/1033173712"
-        const val PROD_INTERSTITIAL_AD_ID: String = "ca-app-pub-6227175612272228/9997804902"
+        const val PROD_INTERSTITIAL_AD_ID: String = "ca-app-pub-8284901143739274/6261404136"
 
 
     }

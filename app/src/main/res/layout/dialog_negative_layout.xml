@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-6227175612272228/6525270233"/>
+        ads:adUnitId="ca-app-pub-8284901143739274/9537948949"/>
 <ImageView
     android:id="@+id/sad_image"
     android:layout_width="180dp"
