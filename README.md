@@ -7,13 +7,11 @@ Tibetan Dictionary
 
 ## Getting Started
 
-Lunar calendar library for Dart Native.
-Computing lunar calendar by timezone.
 
-| <img src="https://github.com/CodingWithTashi/Tibetan-Keyboard/blob/master/app/demo/onboard.jpeg?raw=true" width="300" height="600" /> | <img src="https://github.com/CodingWithTashi/Tibetan-Keyboard/blob/master/app/demo/enable%20language.jpeg?raw=true" width="300" height="600" /> |
+| <img src="https://github.com/CodingWithTashi/EnglishTibetanDictionary/blob/master/demo/welcome.jpeg?raw=true" width="300" height="600" /> | <img src="https://github.com/CodingWithTashi/EnglishTibetanDictionary/blob/master/demo/home.jpeg?raw=true" width="300" height="600" /> |
 | :------------: | :------------: |   
-| **Onboard Screen** | **Set up keyboard** |
-| <img src="https://github.com/CodingWithTashi/Tibetan-Keyboard/blob/master/app/demo/inputmethod.jpeg?raw=true" width="300" height="600" /> | <img src="https://github.com/CodingWithTashi/Tibetan-Keyboard/blob/master/app/demo/ready.jpeg?raw=true" width="300" height="600" /> |
-| **Set up input Method** | **Use case** |
+| **Welcome Screen** | **Home Screen** |
+| <img src="https://github.com/CodingWithTashi/EnglishTibetanDictionary/blob/master/demo/list.jpeg?raw=true" width="300" height="600" /> | <img src="https://github.com/CodingWithTashi/EnglishTibetanDictionary/blob/master/demo/about.jpeg?raw=true" width="300" height="600" /> |
+| **List Screen** | **About Screen** |
 
-[Download App](https://play.google.com/store/apps/details?id=com.kharagedition.tibetankeyboard)
+[Download App](https://play.google.com/store/apps/details?id=com.kharagedition.tibetandictionary)
