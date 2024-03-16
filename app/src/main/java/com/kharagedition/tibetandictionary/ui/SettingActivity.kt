@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.android.billingclient.api.*
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,11 +15,11 @@ import com.kharagedition.tibetandictionary.R
 import com.kharagedition.tibetandictionary.util.Constant
 
 
-class SettingActivity : AppCompatActivity(),PurchasesUpdatedListener {
+class SettingActivity : AppCompatActivity() {
     lateinit var materialToolbar: ImageView
     lateinit var storeButton: MaterialButton
     lateinit var feedbackButton: MaterialButton
-    private lateinit var billingClient: BillingClient
+    //private lateinit var billingClient: BillingClient
     private val skuList = listOf("remove_ads_dictionary")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +27,7 @@ class SettingActivity : AppCompatActivity(),PurchasesUpdatedListener {
         materialToolbar = findViewById(R.id.setting_backbtn)
         storeButton = findViewById(R.id.store_btn)
         feedbackButton = findViewById(R.id.feedback_btn)
-        setupBillingClient()
+        //setupBillingClient()
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -87,7 +86,7 @@ class SettingActivity : AppCompatActivity(),PurchasesUpdatedListener {
         }
 
     }
-
+/*
     private fun setupBillingClient() {
         billingClient = BillingClient.newBuilder(this)
             .enablePendingPurchases()
@@ -181,5 +180,5 @@ class SettingActivity : AppCompatActivity(),PurchasesUpdatedListener {
         }
 
 
-    }
+    }*/
 }
