@@ -2,9 +2,9 @@ package com.kharagedition.tibetandictionary
 
 import android.app.Application
 import android.util.Log
-import dagger.hilt.android.HiltAndroidApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kharagedition.tibetandictionary.util.Constant
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by kharag on 17,June,2021

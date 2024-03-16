@@ -184,9 +184,9 @@ class HomeFragment : Fragment() {
                     dictionaryIcon.setImageResource(R.drawable.ic_baseline_menu_book_24)
                     flipToAnimation.start()
                 }
-            })
+            });
             flipToAnimation.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     super.onAnimationEnd(animation)
                     val bundle = bundleOf("favourite" to false)
                     findNavController().navigate(R.id.listFragment,bundle)

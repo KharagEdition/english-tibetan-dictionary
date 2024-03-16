@@ -1,5 +1,6 @@
 package com.kharagedition.tibetandictionary.ui
 
+import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -125,6 +126,7 @@ class ListFragment : Fragment() {
     }
 
 
+    @SuppressLint("SoonBlockedPrivateApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
         if(diplayFavWordsFavourite==null || diplayFavWordsFavourite == false){
@@ -165,11 +167,13 @@ class ListFragment : Fragment() {
                 }
             })
             searchItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+
+
+                override fun onMenuItemActionExpand(p0: MenuItem): Boolean {
                     return true
                 }
 
-                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                override fun onMenuItemActionCollapse(p0: MenuItem): Boolean {
                     emptyMessage.visibility = GONE
                     fetchWordsFromDictionary(false);
                     return true

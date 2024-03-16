@@ -17,7 +17,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EnglishTibetanDictionary">
+        android:theme="@style/Theme.EnglishTibetanDictionary"
+        android:largeHeap="true">
         <activity android:name="com.kharagedition.tibetandictionary.ui.SettingActivity" />
 
         <meta-data
@@ -27,7 +28,8 @@
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
 
-        <activity android:name="com.kharagedition.tibetandictionary.ui.SplashScreenActivity">
+        <activity android:name="com.kharagedition.tibetandictionary.ui.SplashScreenActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
